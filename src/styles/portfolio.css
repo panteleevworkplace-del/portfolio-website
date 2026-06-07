@@ -1,0 +1,27 @@
+/* Subtle drift on the green wavy stroke around the main photo */
+[data-name="Patch"] {
+  transform-origin: center center;
+  animation: patch-drift 6s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes patch-drift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(4px, -3px) rotate(0.8deg); }
+  50%  { transform: translate(-3px, 2px) rotate(-0.6deg); }
+  75%  { transform: translate(2px, 3px) rotate(0.4deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Goofy squish on the smiley face element */
+[data-name="smile"], [data-name="Smile"], [data-name="smiley"], [data-name="Smiley"] {
+  transform-origin: center center;
+  animation: smiley-squish 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes smiley-squish {
+  0%   { transform: scale(1, 1) rotate(0deg); }
+  25%  { transform: scale(1.08, 0.92) rotate(-3deg); }
+  50%  { transform: scale(0.94, 1.06) rotate(2deg); }
+  75%  { transform: scale(1.05, 0.95) rotate(-2deg); }
+  100% { transform: scale(1, 1) rotate(0deg); }
+}

@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;700&family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-narrow: 'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;
+  --font-display: 'Archivo Black', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
