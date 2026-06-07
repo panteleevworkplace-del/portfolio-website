@@ -1,11 +1,26 @@
+# Portfolio Website — optimized rebuild
 
-  # Portfolio website design
+This version replaces the huge Figma-generated import with a normal component structure.
 
-  This is a code bundle for Portfolio website design. The original project is available at https://www.figma.com/design/WxXOmYEhuU1r0aHT20Xo2E/Portfolio-website-design.
+## Structure
 
-  ## Running the code
+- `src/components` — sections
+- `src/data/portfolio.ts` — project/gallery/client data
+- `public/images` — clean image catalog
+- `src/styles.css` — responsive layout and animations
 
-  Run `npm i` to install the dependencies.
+## Run
 
-  Run `npm run dev` to start the development server.
-  
+```bash
+npm install
+npm run dev
+```
+
+## Deploy
+
+Netlify settings:
+
+```text
+Build command: npm run build
+Publish directory: dist
+```
