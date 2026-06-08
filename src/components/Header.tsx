@@ -3,8 +3,8 @@ export default function Header() {
     <header className="site-header">
       <a href="#top" className="logo">artem</a>
       <nav aria-label="Main navigation">
-        <a href="#works">works</a>
-        <a href="#contact">get in touch</a>
+        <a className="nav-works" href="#works">works</a>
+        <a className="nav-touch" href="#contact">get in touch</a>
       </nav>
     </header>
   );

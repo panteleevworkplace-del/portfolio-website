@@ -72,12 +72,12 @@ a {
 }
 
 .site-header {
-  position: fixed;
+  position: absolute;
   z-index: 20;
   inset: 0 var(--page-pad) auto;
   height: 54px;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   font-size: var(--text-nav);
   font-weight: 600;
@@ -91,14 +91,29 @@ a {
 }
 
 .site-header nav {
-  grid-column: 2 / 4;
-  display: flex;
-  justify-content: flex-end;
-  gap: clamp(24px, 11vw, 148px);
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  pointer-events: none;
 }
 
 .logo {
   justify-self: start;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-works {
+  grid-column: 2;
+  justify-self: center;
+  pointer-events: auto;
+}
+
+.nav-touch {
+  grid-column: 3;
+  justify-self: end;
+  pointer-events: auto;
 }
 
 .section {
