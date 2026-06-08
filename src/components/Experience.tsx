@@ -4,7 +4,9 @@ export default function Experience() {
   return (
     <section className="section experience-section">
       <div className="section-label employment-label">
-        <span className="bars">▮▮▮</span>
+        <span className="icon-square bars-icon">
+          <img src="/icons/vector.svg" alt="" aria-hidden="true" />
+        </span>
         <strong>corporate<br />employment</strong>
       </div>
 

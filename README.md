@@ -1,13 +1,14 @@
-# Portfolio Website — optimized rebuild
+# Portfolio Website — optimized rebuild patch 01
 
-This version replaces the huge Figma-generated import with a normal component structure.
+This patch adds the visual foundation for the landing page:
 
-## Structure
-
-- `src/components` — sections
-- `src/data/portfolio.ts` — project/gallery/client data
-- `public/images` — clean image catalog
-- `src/styles.css` — responsive layout and animations
+- Archivo Narrow typography system
+- Roboto Condensed numbers
+- code-based blue stickers with noise
+- correct arrow/icon assets
+- SVG-filter animated wavy green borders
+- cleaned contact sticker and link arrows
+- 30px layout margin variable
 
 ## Run
 

@@ -41,7 +41,9 @@ export default function JuicyGallery() {
     <section ref={sectionRef} className="section juicy-section">
       <div className="juicy-sticky">
         <div className="section-label juicy-label">
-          <span className="infinity">∞</span>
+          <span className="icon-square">
+            <img src="/icons/infinity.svg" alt="" aria-hidden="true" />
+          </span>
           <strong>even more<br />juicy staff</strong>
         </div>
 

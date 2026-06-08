@@ -6,12 +6,21 @@ export default function Hero() {
         <p>100 000 people are watching now</p>
       </div>
 
-      <div className="hero-visual" aria-label="Artem portrait">
+      <div className="hero-visual wavy-border" aria-label="Artem portrait">
         <img className="hero-photo" src="/images/main-photo.jpg" alt="Artem with toy gun" />
-        <img className="hero-stroke" src="/images/ui/main-photo-stroke.svg" alt="" aria-hidden="true" />
-        <div className="hero-patch">
-          <img src="/images/ui/blue-texture.png" alt="" aria-hidden="true" />
-          <span>Art direction<br />is my love<br />language ↗</span>
+        <div className="hero-patch blue-sticker">
+          <span className="blue-sticker__text">
+            ART<br />
+            DIRECTION<br />
+            IS MY LOVE<br />
+            LANGUAGE
+          </span>
+          <img
+            className="blue-sticker__arrow hero-patch-arrow"
+            src="/icons/arrow.svg"
+            alt=""
+            aria-hidden="true"
+          />
         </div>
       </div>
 
