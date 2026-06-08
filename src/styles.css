@@ -74,11 +74,13 @@ a {
 .site-header {
   position: absolute;
   z-index: 20;
-  inset: 0 var(--page-pad) auto;
-  height: 54px;
+  top: 30px;
+  left: var(--page-pad);
+  right: var(--page-pad);
+  height: 22px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
+  align-items: start;
   font-size: var(--text-nav);
   font-weight: 600;
   letter-spacing: -0.05em;
@@ -91,10 +93,10 @@ a {
 }
 
 .site-header nav {
-  grid-column: 1 / 4;
+  grid-column: 2 / 4;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
   pointer-events: none;
 }
 
@@ -105,13 +107,13 @@ a {
 }
 
 .nav-works {
-  grid-column: 2;
+  grid-column: 1;
   justify-self: center;
   pointer-events: auto;
 }
 
 .nav-touch {
-  grid-column: 3;
+  grid-column: 2;
   justify-self: end;
   pointer-events: auto;
 }
@@ -182,15 +184,15 @@ a {
 
 .hero-section {
   min-height: min(990px, 94svh);
-  padding-top: 82px;
+  padding-top: 88px;
 }
 
 .hero-meta {
   position: absolute;
   z-index: 4;
   left: var(--page-pad);
-  top: clamp(76px, 7.2vw, 104px);
-  max-width: 250px;
+  top: 128px;
+  max-width: 255px;
 }
 
 .hero-meta h1 {
