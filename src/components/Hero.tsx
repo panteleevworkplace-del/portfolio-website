@@ -9,18 +9,19 @@ export default function Hero() {
       <div className="hero-visual wavy-border" aria-label="Artem portrait">
         <img className="hero-photo" src="/images/main-photo.jpg" alt="Artem with toy gun" />
         <div className="hero-patch blue-sticker">
-          <span className="blue-sticker__text">
-            ART<br />
-            DIRECTION<br />
+          <span className="blue-sticker__text hero-patch-text">
+            ART DIRECTION<br />
             IS MY LOVE<br />
-            LANGUAGE
+            <span className="hero-patch-last-line">
+              LANGUAGE
+              <img
+                className="blue-sticker__arrow hero-patch-arrow"
+                src="/icons/arrow.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </span>
           </span>
-          <img
-            className="blue-sticker__arrow hero-patch-arrow"
-            src="/icons/arrow.svg"
-            alt=""
-            aria-hidden="true"
-          />
         </div>
       </div>
 

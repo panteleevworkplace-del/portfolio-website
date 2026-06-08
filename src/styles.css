@@ -197,7 +197,7 @@ a {
 }
 
 .hero-section {
-  min-height: clamp(1015px, 67vw, 1200px);
+  min-height: min(900px, 100svh);
   padding-top: 0;
 }
 
@@ -205,7 +205,7 @@ a {
   position: absolute;
   z-index: 4;
   left: var(--page-pad);
-  top: clamp(95px, 6.6vw, 114px);
+  top: 95px;
   max-width: 270px;
 }
 
@@ -228,11 +228,11 @@ a {
 
 .hero-visual {
   position: absolute;
-  top: clamp(125px, 8.68vw, 150px);
+  top: 125px;
   right: var(--page-pad);
-  width: min(88.54vw, calc(100vw - 90px));
-  aspect-ratio: 1275 / 850;
-  height: auto;
+  width: min(88.54vw, 1275px);
+  height: min(59vw, calc(100svh - 145px), 850px);
+  min-height: 680px;
   margin: 0;
   border-radius: 999px;
   overflow: visible;
@@ -248,12 +248,12 @@ a {
 .hero-patch {
   position: absolute;
   z-index: 4;
-  left: 5.2%;
-  top: 51%;
-  width: 27.45%;
+  left: -1.2%;
+  top: 52%;
+  width: clamp(290px, 24.3vw, 350px);
   aspect-ratio: 350 / 197;
   transform: rotate(-9deg);
-  padding: 4.8% 5.7%;
+  padding: clamp(24px, 2.15vw, 31px) clamp(22px, 2.35vw, 34px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -262,23 +262,32 @@ a {
 }
 
 .hero-patch-text {
-  font-size: clamp(38px, 3.33vw, 58px);
+  display: block;
+  font-size: clamp(38px, 3.33vw, 48px);
   line-height: 0.84;
   letter-spacing: -0.05em;
 }
 
+.hero-patch-last-line {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(10px, 1vw, 14px);
+}
+
 .hero-patch-arrow {
-  width: 15%;
-  min-width: 38px;
-  max-width: 66px;
-  margin-top: 2%;
-  margin-left: 68%;
+  position: relative;
+  display: inline-block;
+  width: clamp(30px, 3vw, 43px);
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  transform: translateY(0.08em);
 }
 
 .hero-role {
   position: absolute;
   right: var(--page-pad);
-  bottom: clamp(88px, 7vw, 118px);
+  bottom: 64px;
   font-size: var(--text-hero);
   line-height: 0.82;
   letter-spacing: -0.05em;
@@ -813,6 +822,7 @@ address {
     right: auto;
     width: 100%;
     height: min(72vw, 560px);
+    min-height: 0;
     margin-inline: auto;
     border-radius: 44vw;
   }
