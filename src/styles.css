@@ -74,7 +74,7 @@ a {
 .site-header {
   position: absolute;
   z-index: 20;
-  top: 20px;
+  top: 30px;
   left: var(--page-pad);
   right: var(--page-pad);
   height: 22px;
@@ -197,18 +197,16 @@ a {
 }
 
 .hero-section {
-  min-height: min(990px, 94svh);
-  padding-top: 108px;
+  min-height: clamp(1015px, 67vw, 1200px);
+  padding-top: 0;
 }
 
-.hero-visual {
-  position: relative;
-  width: min(calc(100vw - 120px), 1320px);
-  height: clamp(500px, 59vw, 850px);
-  margin-left: clamp(70px, 8vw, 115px);
-  margin-right: auto;
-  border-radius: 999px;
-  overflow: visible;
+.hero-meta {
+  position: absolute;
+  z-index: 4;
+  left: var(--page-pad);
+  top: clamp(95px, 6.6vw, 114px);
+  max-width: 270px;
 }
 
 .hero-meta h1 {
@@ -229,10 +227,13 @@ a {
 }
 
 .hero-visual {
-  position: relative;
-  width: min(100%, 1275px);
-  height: clamp(470px, 59vw, 850px);
-  margin-inline: auto;
+  position: absolute;
+  top: clamp(125px, 8.68vw, 150px);
+  right: var(--page-pad);
+  width: min(88.54vw, calc(100vw - 90px));
+  aspect-ratio: 1275 / 850;
+  height: auto;
+  margin: 0;
   border-radius: 999px;
   overflow: visible;
 }
@@ -247,12 +248,12 @@ a {
 .hero-patch {
   position: absolute;
   z-index: 4;
-  left: clamp(76px, 8.9vw, 128px);
-  bottom: clamp(74px, 8.35vw, 120px);
-  width: clamp(272px, 24.3vw, 350px);
+  left: 5.2%;
+  top: 51%;
+  width: 27.45%;
   aspect-ratio: 350 / 197;
   transform: rotate(-9deg);
-  padding: clamp(22px, 2.45vw, 35px) clamp(24px, 2.9vw, 42px);
+  padding: 4.8% 5.7%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -261,21 +262,23 @@ a {
 }
 
 .hero-patch-text {
-  font-size: clamp(28px, 3vw, 43px);
+  font-size: clamp(38px, 3.33vw, 58px);
   line-height: 0.84;
   letter-spacing: -0.05em;
 }
 
 .hero-patch-arrow {
-  width: clamp(30px, 3.6vw, 52px);
-  margin-top: clamp(4px, 0.55vw, 8px);
-  margin-left: clamp(42px, 5.4vw, 78px);
+  width: 15%;
+  min-width: 38px;
+  max-width: 66px;
+  margin-top: 2%;
+  margin-left: 68%;
 }
 
 .hero-role {
   position: absolute;
   right: var(--page-pad);
-  bottom: clamp(38px, 5vw, 70px);
+  bottom: clamp(88px, 7vw, 118px);
   font-size: var(--text-hero);
   line-height: 0.82;
   letter-spacing: -0.05em;
@@ -805,6 +808,9 @@ address {
   }
 
   .hero-visual {
+    position: relative;
+    top: auto;
+    right: auto;
     width: 100%;
     height: min(72vw, 560px);
     margin-inline: auto;
