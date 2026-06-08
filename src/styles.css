@@ -203,9 +203,10 @@ a {
 
 .hero-visual {
   position: relative;
-  width: min(100%, 1275px);
-  height: clamp(470px, 59vw, 850px);
-  margin-inline: auto;
+  width: min(calc(100vw - 120px), 1320px);
+  height: clamp(500px, 59vw, 850px);
+  margin-left: clamp(70px, 8vw, 115px);
+  margin-right: auto;
   border-radius: 999px;
   overflow: visible;
 }
