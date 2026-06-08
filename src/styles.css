@@ -74,10 +74,12 @@ a {
 .site-header {
   position: absolute;
   z-index: 20;
-  inset: 0 var(--page-pad) auto;
-  height: 54px;
+  top: 20px;
+  left: var(--page-pad);
+  right: var(--page-pad);
+  height: 22px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   font-size: var(--text-nav);
   font-weight: 600;
@@ -91,27 +93,29 @@ a {
 }
 
 .site-header nav {
-  grid-column: 1 / 4;
+  grid-column: 2 / 4;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr;
   align-items: center;
+  width: 100%;
   pointer-events: none;
 }
 
 .logo {
   justify-self: start;
+  align-self: center;
   position: relative;
   z-index: 2;
 }
 
 .nav-works {
-  grid-column: 2;
+  grid-column: 1;
   justify-self: center;
   pointer-events: auto;
 }
 
 .nav-touch {
-  grid-column: 3;
+  grid-column: 2;
   justify-self: end;
   pointer-events: auto;
 }
@@ -197,12 +201,13 @@ a {
   padding-top: 108px;
 }
 
-.hero-meta {
-  position: absolute;
-  z-index: 4;
-  left: var(--page-pad);
-  top: clamp(104px, 8.6vw, 124px);
-  max-width: 255px;
+.hero-visual {
+  position: relative;
+  width: min(100%, 1275px);
+  height: clamp(470px, 59vw, 850px);
+  margin-inline: auto;
+  border-radius: 999px;
+  overflow: visible;
 }
 
 .hero-meta h1 {
@@ -224,10 +229,9 @@ a {
 
 .hero-visual {
   position: relative;
-  width: min(calc(100% - 120px), 1275px);
+  width: min(100%, 1275px);
   height: clamp(470px, 59vw, 850px);
-  margin-left: auto;
-  margin-right: clamp(30px, 4.2vw, 60px);
+  margin-inline: auto;
   border-radius: 999px;
   overflow: visible;
 }
