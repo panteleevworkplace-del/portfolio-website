@@ -1,4 +1,4 @@
-# How to apply patch 01
+# How to apply patch 02 — Hero tuning
 
 Copy these files/folders into your current project root with replacement:
 
@@ -18,6 +18,6 @@ npm install
 npm run dev
 npm run build
 git add -A
-git commit -m "Update typography and wavy visual system"
+git commit -m "Tune hero layout and blue sticker"
 git push
 ```

@@ -1,14 +1,14 @@
-# Portfolio Website — optimized rebuild patch 01
+# Portfolio Website — optimized rebuild patch 02
 
-This patch adds the visual foundation for the landing page:
+Patch 02 focuses on Hero tuning:
 
-- Archivo Narrow typography system
-- Roboto Condensed numbers
-- code-based blue stickers with noise
-- correct arrow/icon assets
-- SVG-filter animated wavy green borders
-- cleaned contact sticker and link arrows
-- 30px layout margin variable
+- header is now static, not fixed;
+- `works` is centered against the page;
+- hero label text is slightly smaller and pushed lower to avoid collision with the green border;
+- blue sticker dimensions/position are closer to the 1440px reference;
+- sticker text has correct 3-line composition;
+- arrow is smaller and positioned like the Figma reference;
+- CSS procedural noise added to the blue sticker.
 
 ## Run
 
