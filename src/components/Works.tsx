@@ -104,7 +104,10 @@ export default function Works() {
                   <img
                     src={project.image}
                     alt={project.title}
-                    loading="lazy"
+                    loading={
+                      index < INITIAL_VISIBLE_PROJECTS ? "eager" : "lazy"
+                    }
+                    decoding="async"
                   />
                 </picture>
               </a>

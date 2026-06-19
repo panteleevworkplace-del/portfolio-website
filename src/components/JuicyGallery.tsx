@@ -177,14 +177,23 @@ export default function JuicyGallery() {
 
           {groups.map((group, groupIndex) => (
             <div className="juicy-grid" key={`juicy-group-${groupIndex}`}>
-              {group.map((item, itemIndex) => (
-                <figure
-                  className={`juicy-card juicy-card--${itemIndex + 1}`}
-                  key={item.image}
-                >
-                  <img src={item.image} alt={item.alt} loading="lazy" />
-                </figure>
-              ))}
+              {group.map((item, itemIndex) => {
+                const absoluteIndex = groupIndex * GROUP_SIZE + itemIndex;
+
+                return (
+                  <figure
+                    className={`juicy-card juicy-card--${itemIndex + 1}`}
+                    key={item.image}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      loading={absoluteIndex < GROUP_SIZE ? "eager" : "lazy"}
+                      decoding="async"
+                    />
+                  </figure>
+                );
+              })}
             </div>
           ))}
         </div>
