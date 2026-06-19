@@ -1,0 +1,516 @@
+/* Header, Hero, and shared Hero/Contact sticker/border effects. */
+
+/* Header: keep the 900/901 breakpoint behavior aligned with desktop restoration. */
+.site-header {
+  position: absolute;
+  z-index: 20;
+  top: 20px;
+  left: var(--page-pad);
+  right: var(--page-pad);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  font-size: var(--text-nav);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.site-header__button {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.site-header__item {
+  color: var(--fg);
+  transition: color 180ms ease;
+}
+
+.site-header__item--center:hover,
+.site-header__item--right:hover {
+  color: var(--acid);
+}
+
+.site-header__item--left {
+  justify-self: start;
+}
+
+.site-header__item--center {
+  justify-self: center;
+}
+
+.site-header__item--right {
+  justify-self: end;
+}
+
+/* Shared Hero/Contact wavy border. Mobile swaps to a static SVG filter to avoid iPhone/Safari heating. */
+.wavy-border {
+  position: relative;
+}
+
+.wavy-border::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: clamp(10px, 1.1vw, 16px) solid var(--acid);
+  border-radius: inherit;
+  filter: url(#wavy-border-filter);
+  pointer-events: none;
+  z-index: 3;
+  animation: wavyBorderDrift 5s ease-in-out infinite alternate;
+}
+
+@keyframes wavyBorderDrift {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1.004) rotate(-0.12deg);
+  }
+}
+
+/* Shared blue sticker primitive used by Hero and Contact heart interactions. */
+.blue-sticker {
+  position: relative;
+  overflow: hidden;
+  background: #0000fe;
+  color: var(--acid);
+  isolation: isolate;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.blue-sticker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.18;
+  background:
+    linear-gradient(
+      108deg,
+      transparent 0 28%,
+      rgba(255, 255, 255, 0.1) 29%,
+      transparent 31%
+    ),
+    linear-gradient(
+      76deg,
+      transparent 0 54%,
+      rgba(255, 255, 255, 0.07) 55%,
+      transparent 57%
+    );
+  pointer-events: none;
+}
+
+.blue-sticker__text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: var(--text-hero);
+  line-height: 0.86;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.blue-sticker__arrow {
+  position: relative;
+  z-index: 2;
+  width: clamp(34px, 4vw, 58px);
+  height: auto;
+}
+
+/* Hero desktop layout. The picture wrapper clips the image; do not use display: contents here. */
+.hero-section {
+  min-height: 900px;
+  padding-top: 0;
+  padding-inline: 0;
+}
+
+.hero-composition {
+  position: relative;
+  width: min(calc(100vw - 60px), var(--layout-max));
+  height: 900px;
+  margin-inline: auto;
+
+  --hero-image-top: 115px;
+  --hero-image-height: clamp(760px, 57.64vw, 830px);
+  --hero-image-width: min(calc(100% - 120px), 1560px);
+}
+
+.hero-meta {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  top: 95px;
+  max-width: clamp(270px, 24vw, 460px);
+}
+
+.hero-meta h1 {
+  margin: 0 0 10px;
+  font-size: var(--text-hero);
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hero-meta p {
+  margin: 0;
+  width: 200px;
+  font-size: var(--text-small-hero);
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
+.hero-stage {
+  position: static;
+}
+
+.hero-frame {
+  position: absolute;
+  top: var(--hero-image-top);
+  left: 50%;
+  width: var(--hero-image-width);
+  max-width: none;
+  height: var(--hero-image-height);
+  margin: 0;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  overflow: visible;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: visible;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.hero-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.hero-patch {
+  position: absolute;
+  z-index: 4;
+  left: 5.7%;
+  bottom: 13.5%;
+  width: max-content;
+  max-width: min(44%, 430px);
+  min-width: 0;
+  aspect-ratio: auto;
+  transform: rotate(-9deg);
+  padding: clamp(20px, 2vw, 28px) clamp(24px, 2.4vw, 34px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hero-patch-text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  white-space: nowrap;
+  font-size: clamp(30px, 2.65vw, 51px);
+  line-height: 0.84;
+  letter-spacing: -0.05em;
+}
+
+.hero-patch-last-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-patch-arrow {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  width: clamp(20px, 1.8vw, 26px);
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  transform: translateY(0.04em);
+}
+
+.hero-hearts {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hero-heart {
+  position: absolute;
+  display: block;
+  width: clamp(30px, 2.8vw, 46px);
+  height: clamp(30px, 2.8vw, 46px);
+  color: #ff2f67;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(var(--scale));
+  animation: heroHeartFloat 2.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay);
+  filter: drop-shadow(0 8px 14px rgba(255, 47, 103, 0.2));
+  will-change: transform, opacity;
+}
+
+@keyframes heroHeartFloat {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.42) rotate(0deg);
+  }
+
+  10% {
+    opacity: 0.94;
+    transform: translate(
+        calc(-50% + var(--start-x)),
+        calc(-50% + var(--start-y))
+      )
+      scale(var(--scale)) rotate(calc(var(--rotate) * 0.18));
+  }
+
+  62% {
+    opacity: 0.9;
+    transform: translate(
+        calc(-50% + var(--tx) * 0.62),
+        calc(-50% + var(--ty) * 0.62)
+      )
+      scale(calc(var(--scale) * 1.06)) rotate(calc(var(--rotate) * 0.62));
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+      scale(calc(var(--scale) * 1.18)) rotate(var(--rotate));
+  }
+}
+
+.hero-role {
+  position: absolute;
+  z-index: 8;
+  right: 0;
+  bottom: calc(900px - var(--hero-image-top) - var(--hero-image-height));
+  font-size: var(--text-hero);
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+
+/* Hero desktop/tablet refinement. */
+@media (max-width: 1440px) and (min-width: 901px) {
+  .hero-section {
+    min-height: auto;
+  }
+
+  .hero-meta h1 {
+    max-width: clamp(240px, 23vw, 330px);
+    white-space: normal;
+  }
+
+  .hero-meta p {
+    width: max-content;
+    max-width: none;
+    white-space: normal;
+  }
+
+  .hero-composition {
+    height: auto;
+  }
+
+  .hero-stage {
+    --hero-decoration-bleed: clamp(16px, 1.5vw, 22px);
+
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      var(--hero-image-top)
+      auto
+      var(--hero-decoration-bleed);
+  }
+
+  .hero-frame {
+    position: relative;
+    inset: auto;
+    grid-column: 1;
+    grid-row: 2;
+    width: var(--hero-image-width);
+    aspect-ratio: 1560 / 830;
+    height: auto;
+    margin-inline: auto;
+    transform: none;
+  }
+
+  .hero-role {
+    position: relative;
+    inset: auto;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: end;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Mobile Header + Hero. The wavy border remains visible but static on mobile for performance. */
+  .site-header {
+    left: var(--page-pad);
+    right: var(--page-pad);
+  }
+
+  .site-header__item--left {
+    grid-column: 1;
+  }
+
+  .site-header__item--center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .site-header__item--right {
+    grid-column: 3;
+  }
+
+  .site-header__item {
+    transition: none;
+  }
+
+  .site-header__item--center:hover,
+  .site-header__item--right:hover {
+    color: var(--fg);
+  }
+
+  .wavy-border::after {
+    filter: url(#wavy-border-filter-mobile-static);
+    animation: none;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: clamp(84px, 23.077vw, 98px);
+    padding-bottom: 0;
+  }
+
+  .hero-composition {
+    width: calc(100% - (var(--page-pad) * 2));
+    height: auto;
+  }
+
+  .hero-meta {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: none;
+    margin-bottom: calc(clamp(14px, 4.103vw, 18px) + 3px);
+    text-align: center;
+  }
+
+  .hero-meta h1 {
+    margin-bottom: 8px;
+    font-size: clamp(36px, 10.256vw, 44px);
+  }
+
+  .hero-meta p {
+    width: auto;
+    font-size: clamp(18px, 5.128vw, 22px);
+    line-height: 0.9;
+  }
+
+  .hero-meta p br {
+    display: none;
+  }
+
+  .hero-stage {
+    position: relative;
+    padding-bottom: clamp(58px, 16.41vw, 70px);
+  }
+
+  .hero-frame {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    max-width: none;
+    height: clamp(388px, 107.692vw, 560px);
+    margin-inline: auto;
+    transform: none;
+    border-radius: clamp(92px, 25.641vw, 120px);
+  }
+
+  .hero-frame.wavy-border::after {
+    inset: -4px;
+    border-width: 7px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .hero-patch {
+    left: clamp(4px, 2.051vw, 10px);
+    bottom: clamp(-46px, -11.795vw, -40px);
+    width: max-content;
+    max-width: calc(100% - 118px);
+    padding: clamp(11px, 3.077vw, 14px) clamp(13px, 3.59vw, 16px);
+  }
+
+  .hero-patch-text {
+    font-size: clamp(24px, 6.65vw, 29px);
+  }
+
+  .hero-patch-last-line {
+    gap: 6px;
+  }
+
+  .hero-patch-arrow {
+    width: 0.84em;
+  }
+
+  .hero-role {
+    position: absolute;
+    right: 0;
+    bottom: clamp(14px, 4.103vw, 18px);
+    left: auto;
+    top: auto;
+    margin: 0;
+    font-size: clamp(36px, 10.256vw, 44px);
+    text-align: right;
+  }
+}

@@ -32,6 +32,22 @@ function SvgFilters() {
           yChannelSelector="G"
         />
       </filter>
+      <filter id="wavy-border-filter-mobile-static">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.018 0.055"
+          numOctaves="2"
+          seed="8"
+          result="noise"
+        />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="noise"
+          scale="10"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
     </svg>
   );
 }

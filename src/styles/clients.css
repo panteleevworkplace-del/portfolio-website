@@ -1,0 +1,392 @@
+/* Clients section: desktop orbit and mobile constellation. */
+
+/* Desktop orbit. Keep positions, lines, gradient, and hand animation isolated from mobile constellation. */
+.clients-section {
+  padding-top: var(--space-section);
+}
+
+.clients-orbit {
+  position: relative;
+  width: min(calc(100vw - (var(--page-pad) * 2)), var(--layout-max));
+  aspect-ratio: 1275 / 620;
+  height: auto;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: clamp(88px, 9vw, 130px);
+  background:
+    radial-gradient(
+      58% 72% at 50% 54%,
+      rgba(98, 188, 255, 0.82) 0%,
+      rgba(32, 126, 255, 0.74) 34%,
+      rgba(0, 24, 220, 0.76) 64%,
+      rgba(4, 20, 92, 0.94) 100%
+    ),
+    radial-gradient(
+      42% 58% at 22% 22%,
+      rgba(190, 236, 255, 0.34),
+      transparent 66%
+    ),
+    radial-gradient(
+      44% 60% at 82% 28%,
+      rgba(0, 255, 255, 0.18),
+      transparent 68%
+    ),
+    linear-gradient(135deg, #071b63 0%, var(--blue) 48%, #071048 100%);
+  isolation: isolate;
+}
+
+.clients-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.clients-lines line {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.clients-title {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--text-hero);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  text-align: left;
+  color: #fff;
+}
+
+.cursor-hand {
+  position: absolute;
+  z-index: 6;
+  left: 52%;
+  top: 58%;
+  width: clamp(28px, 2.25vw, 42px);
+  height: auto;
+  transform: translate(-10%, -18%) rotate(-6deg);
+  transform-origin: 45% 12%;
+  filter: none;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor-hand--animate {
+  animation: handTapTitle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes handTapTitle {
+  0% {
+    transform: translate(-10%, -18%) rotate(-6deg) scale(1);
+  }
+
+  12% {
+    transform: translate(-16%, -26%) rotate(-7deg) scale(1);
+  }
+
+  42% {
+    transform: translate(-74%, -105%) rotate(-12deg) scale(1);
+  }
+
+  52% {
+    transform: translate(-74%, -105%) rotate(-12deg) scale(0.9);
+  }
+
+  64% {
+    transform: translate(-74%, -105%) rotate(-12deg) scale(1);
+  }
+
+  100% {
+    transform: translate(-10%, -18%) rotate(-6deg) scale(1);
+  }
+}
+
+.client-dot {
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  color: #fff;
+  font-size: clamp(11px, 0.9vw, 17px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+}
+
+.client-thumb {
+  width: clamp(44px, 4.2vw, 70px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: clamp(8px, 0.833vw, 16px);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.client-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* LG */
+.client-1 {
+  left: 6%;
+  top: 18%;
+}
+
+/* Espolón */
+.client-2 {
+  left: 24%;
+  top: 17%;
+}
+
+/* Sheba */
+.client-3 {
+  left: 49%;
+  top: 15%;
+}
+
+/* Orbit */
+.client-4 {
+  left: 74%;
+  top: 13%;
+}
+
+/* Colgate */
+.client-5 {
+  left: 94%;
+  top: 18%;
+}
+
+/* Papa John's */
+.client-6 {
+  left: 14%;
+  top: 45%;
+}
+
+/* M&M’s */
+.client-7 {
+  left: 88%;
+  top: 45%;
+}
+
+/* Pedigree */
+.client-8 {
+  left: 6%;
+  top: 78%;
+}
+
+/* Asus */
+.client-9 {
+  left: 26%;
+  top: 84%;
+}
+
+/* MTS */
+.client-10 {
+  left: 54%;
+  top: 87%;
+}
+
+/* Snickers */
+.client-11 {
+  left: 76%;
+  top: 83%;
+}
+
+/* IVI */
+.client-12 {
+  left: 94%;
+  top: 78%;
+}
+
+@media (max-width: 900px) {
+  /* Mobile Clients */
+  .clients-section {
+    padding-top: clamp(80px, 12vw, 105px);
+    padding-bottom: 0;
+  }
+
+  .clients-orbit {
+    aspect-ratio: auto;
+    height: clamp(460px, 123.077vw, 540px);
+    border-radius: clamp(46px, 12.821vw, 56px);
+    overflow: hidden;
+    background:
+      radial-gradient(
+        62% 58% at 50% 48%,
+        rgba(93, 176, 255, 0.92) 0%,
+        rgba(38, 128, 255, 0.82) 42%,
+        rgba(0, 50, 235, 0.78) 72%,
+        rgba(0, 32, 180, 0.9) 100%
+      ),
+      radial-gradient(
+        44% 42% at 35% 35%,
+        rgba(184, 232, 255, 0.24),
+        transparent 72%
+      ),
+      linear-gradient(135deg, #073bd8 0%, #0000fe 52%, #0020b8 100%);
+  }
+
+  .clients-title {
+    top: 50%;
+    font-size: clamp(34px, 9.744vw, 40px);
+    text-align: center;
+  }
+
+  /* Mobile Clients: static hand */
+  .clients-title::after {
+    content: "";
+    position: absolute;
+    left: calc(100% - 12px);
+    top: calc(68% + 20px);
+    width: auto;
+    height: clamp(26px, 7.179vw, 30px);
+    aspect-ratio: 39 / 43;
+    background: url("/icons/hand.svg") center / contain no-repeat;
+    transform: rotate(-6deg);
+    pointer-events: none;
+  }
+
+  .clients-lines,
+  .cursor-hand {
+    display: none;
+  }
+
+  .cursor-hand--animate {
+    animation: none;
+  }
+
+  .client-dot {
+    display: grid;
+    gap: 0;
+    font-size: 0;
+  }
+
+  .client-thumb {
+    width: clamp(42px, 11.308vw, 47px);
+    border-radius: clamp(10px, 3.077vw, 14px);
+  }
+
+  .client-dot > span:last-child {
+    display: none;
+  }
+
+  /* Mobile Clients: hidden logos */
+  .client-3,
+  .client-5 {
+    display: none;
+  }
+
+  /* Mobile Clients: positions */
+  .client-1 {
+    left: 15%;
+    top: 46%;
+  }
+
+  .client-2 {
+    left: 14%;
+    top: 16%;
+  }
+
+  .client-4 {
+    left: 82%;
+    top: 22%;
+  }
+
+  .client-6 {
+    left: 43%;
+    top: calc(73%);
+  }
+
+  .client-7 {
+    left: 84%;
+    top: 72%;
+  }
+
+  .client-8 {
+    left: 64%;
+    top: 88%;
+  }
+
+  .client-9 {
+    left: 15%;
+    top: 82%;
+  }
+
+  .client-10 {
+    left: 54%;
+    top: 13%;
+  }
+
+  .client-11 {
+    left: 35%;
+    top: 29%;
+  }
+
+  .client-12 {
+    left: 85%;
+    top: 46%;
+  }
+
+  /* Mobile Clients: sizes */
+  .client-6 .client-thumb {
+    width: clamp(48px, 12.693vw, 52px);
+  }
+
+  .client-7 .client-thumb {
+    width: clamp(48px, 12.693vw, 52px);
+  }
+
+  .client-9 .client-thumb {
+    width: clamp(46px, 12.231vw, 50px);
+  }
+
+  .client-11 .client-thumb {
+    width: clamp(50px, 13.385vw, 56px);
+  }
+
+  .client-12 .client-thumb {
+    width: clamp(48px, 12.693vw, 52px);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  /* Mobile Clients: wider screens */
+  .client-thumb {
+    width: 54px;
+  }
+
+  .client-1 .client-thumb {
+    width: 56px;
+  }
+
+  .client-6 .client-thumb {
+    width: 60px;
+  }
+
+  .client-7 .client-thumb {
+    width: 62px;
+  }
+
+  .client-9 .client-thumb {
+    width: 70px;
+  }
+
+  .client-11 .client-thumb {
+    width: 67px;
+  }
+
+  .client-12 .client-thumb {
+    width: 60px;
+  }
+}
