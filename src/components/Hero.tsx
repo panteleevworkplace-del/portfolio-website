@@ -86,6 +86,8 @@ export default function Hero() {
                   className="hero-photo"
                   src="/images/main-photo.jpg"
                   alt="Artem with toy gun"
+                  fetchPriority="high"
+                  decoding="async"
                 />
               </picture>
 

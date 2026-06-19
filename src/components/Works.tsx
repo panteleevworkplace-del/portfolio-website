@@ -3,6 +3,22 @@ import { projects } from "../data/portfolio";
 
 const INITIAL_VISIBLE_PROJECTS = 4;
 
+type IdleWindow = Window &
+  typeof globalThis & {
+    requestIdleCallback?: (
+      callback: () => void,
+      options?: { timeout?: number },
+    ) => number;
+    cancelIdleCallback?: (handle: number) => void;
+  };
+
+const preloadImage = (src: string) => {
+  const image = new Image();
+  image.decoding = "async";
+  image.src = src;
+  image.decode?.().catch(() => undefined);
+};
+
 export default function Works() {
   const [showAllProjects, setShowAllProjects] = useState(false);
 
@@ -18,6 +34,37 @@ export default function Works() {
       });
     });
   }, [showAllProjects]);
+
+  useEffect(() => {
+    const hiddenProjects = projects.slice(INITIAL_VISIBLE_PROJECTS);
+    if (hiddenProjects.length === 0) return;
+
+    const preloadHiddenImages = () => {
+      const prefersMobile = window.matchMedia("(max-width: 900px)").matches;
+      const sources = new Set<string>();
+
+      hiddenProjects.forEach((project) => {
+        sources.add(prefersMobile ? project.mobileSrc : project.image);
+        sources.add(prefersMobile ? project.image : project.mobileSrc);
+      });
+
+      sources.forEach(preloadImage);
+    };
+
+    const idleWindow = window as IdleWindow;
+
+    if (idleWindow.requestIdleCallback) {
+      const idleId = idleWindow.requestIdleCallback(preloadHiddenImages, {
+        timeout: 2000,
+      });
+
+      return () => idleWindow.cancelIdleCallback?.(idleId);
+    }
+
+    const timeoutId = window.setTimeout(preloadHiddenImages, 1200);
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
 
   return (
     <section id="works" className="section works-section">

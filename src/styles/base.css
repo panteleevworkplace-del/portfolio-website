@@ -1,5 +1,4 @@
 /* Global foundation: variables, reset, document background, and shared page shell only. */
-@import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600;700&family=Roboto+Condensed:wght@700&display=swap");
 
 :root {
   --bg: #191917;
