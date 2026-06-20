@@ -92,9 +92,12 @@ a {
 
 .svg-filters {
   position: absolute;
+  top: -9999px;
+  left: -9999px;
   width: 0;
   height: 0;
   overflow: hidden;
+  pointer-events: none;
 }
 
 /* Shared page section wrapper. Keep section-specific spacing in section files. */
