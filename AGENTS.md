@@ -14,10 +14,11 @@ Portfolio_website
 Current work mode:
 
 - Build and preview locally.
-- Netlify live preview and GitHub may be outdated unless Artem says otherwise.
-- Do not rely on deployed Netlify version as the source of truth.
+- Cloudflare Pages live site: `https://artyarty.pages.dev/`.
+- Cloudflare Pages live site and GitHub may be outdated unless Artem says otherwise.
+- Do not rely on deployed Cloudflare Pages version as the source of truth.
 - Use the local project state as the current source of truth.
-- Do not touch Netlify unless Artem explicitly asks.
+- Do not touch Cloudflare Pages deploy settings unless Artem explicitly asks.
 
 Tech stack:
 
@@ -396,8 +397,8 @@ Rules:
 - Do not commit `.DS_Store` or other system files.
 - Do not touch `.git` internals.
 - Do not commit `node_modules`.
-- Do not update Netlify unless explicitly requested.
-- Pushing to GitHub should be separate from Netlify deployment if possible/desired.
+- Do not update Cloudflare Pages deploy settings unless explicitly requested.
+- Pushing to GitHub should be separate from Cloudflare Pages deployment if possible/desired.
 
 Make sure `.gitignore` includes:
 

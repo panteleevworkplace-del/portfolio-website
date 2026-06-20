@@ -1,5 +1,21 @@
 /* Global foundation: variables, reset, document background, and shared page shell only. */
 
+@font-face {
+  font-family: "Archivo Narrow";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: block;
+  src: url("/fonts/archivo-narrow-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("/fonts/roboto-condensed-700-latin.woff2") format("woff2");
+}
+
 :root {
   --bg: #191917;
   --fg: #ffffff;
