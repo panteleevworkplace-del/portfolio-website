@@ -7,7 +7,8 @@ import Clients from './components/Clients';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import { getCaseBySlug } from './data/cases';
-import CasePage, { NotFoundPage } from './pages/CasePage';
+import CaseStudyPage from './pages/case-study-page';
+import NotFoundPage from './pages/not-found-page';
 
 function SvgFilters() {
   return (
@@ -121,7 +122,7 @@ export default function App() {
       <Header />
       {caseMatch ? (
         portfolioCase ? (
-          <CasePage portfolioCase={portfolioCase} />
+          <CaseStudyPage portfolioCase={portfolioCase} />
         ) : (
           <NotFoundPage />
         )

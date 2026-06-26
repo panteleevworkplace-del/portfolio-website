@@ -8,8 +8,24 @@ import {
   getNextCase,
 } from "../data/cases";
 
-type CasePageProps = {
+type CaseStudyPageProps = {
   portfolioCase: PortfolioCase;
+};
+
+type IdleWindow = Window &
+  typeof globalThis & {
+    requestIdleCallback?: (
+      callback: () => void,
+      options?: { timeout?: number },
+    ) => number;
+    cancelIdleCallback?: (handle: number) => void;
+  };
+
+const preloadImage = (src: string) => {
+  const image = new Image();
+  image.decoding = "async";
+  image.src = src;
+  image.decode?.().catch(() => undefined);
 };
 
 const blockClass = (block: CaseBlock) => {
@@ -52,7 +68,7 @@ function CaseImage({
           alt={block.alt}
           width={block.width}
           height={block.height}
-          loading={loading}
+          loading={block.loading ?? loading}
           decoding="async"
         />
       </picture>
@@ -71,6 +87,23 @@ function CaseVideo({ block }: { block: CaseVideoBlock }) {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) return;
 
+    let preloadObserver: IntersectionObserver | undefined;
+
+    if ((block.preload ?? "none") === "none") {
+      preloadObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+
+          video.preload = "metadata";
+          video.load();
+          preloadObserver?.disconnect();
+        },
+        { rootMargin: "700px 0px", threshold: 0 },
+      );
+
+      preloadObserver.observe(video);
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -86,10 +119,11 @@ function CaseVideo({ block }: { block: CaseVideoBlock }) {
     observer.observe(video);
 
     return () => {
+      preloadObserver?.disconnect();
       observer.disconnect();
       video.pause();
     };
-  }, []);
+  }, [block.preload]);
 
   const toggleSound = () => {
     const video = videoRef.current;
@@ -115,7 +149,7 @@ function CaseVideo({ block }: { block: CaseVideoBlock }) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload={block.preload ?? "none"}
           aria-label="Case video"
         />
 
@@ -156,9 +190,48 @@ function CaseBlockRenderer({
   return <CaseVideo block={block} />;
 }
 
-export default function CasePage({ portfolioCase }: CasePageProps) {
+export default function CaseStudyPage({ portfolioCase }: CaseStudyPageProps) {
   const nextCase = getNextCase(portfolioCase);
   let imageCount = 0;
+
+  useEffect(() => {
+    const prefersMobile = window.matchMedia("(max-width: 900px)").matches;
+    const sources: string[] = [];
+    let seenFirstImage = false;
+
+    portfolioCase.blocks.forEach((block) => {
+      if (block.type !== "image") return;
+
+      if (!seenFirstImage) {
+        seenFirstImage = true;
+        return;
+      }
+
+      sources.push(
+        prefersMobile && block.mobileSrc ? block.mobileSrc : block.src,
+      );
+    });
+
+    if (sources.length === 0) return;
+
+    const preloadImages = () => {
+      sources.forEach(preloadImage);
+    };
+
+    const idleWindow = window as IdleWindow;
+
+    if (idleWindow.requestIdleCallback) {
+      const idleId = idleWindow.requestIdleCallback(preloadImages, {
+        timeout: 1800,
+      });
+
+      return () => idleWindow.cancelIdleCallback?.(idleId);
+    }
+
+    const timeoutId = window.setTimeout(preloadImages, 1200);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [portfolioCase]);
 
   return (
     <main className="case-page">
@@ -189,18 +262,6 @@ export default function CasePage({ portfolioCase }: CasePageProps) {
         <span>next case</span>
         <img src="/icons/next-case-icon.svg" alt="" aria-hidden="true" />
       </a>
-    </main>
-  );
-}
-
-export function NotFoundPage() {
-  return (
-    <main className="case-page case-page--not-found">
-      <section className="case-not-found">
-        <h1>Page not found</h1>
-        <p>It doesn’t exist in this timeline</p>
-        <a href="/">Take me back</a>
-      </section>
     </main>
   );
 }

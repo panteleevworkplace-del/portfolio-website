@@ -15,6 +15,7 @@ export type CaseImageBlock = {
   alt: string;
   width?: number;
   height?: number;
+  loading?: "eager" | "lazy";
   spacingBefore?: CaseSpacing;
   mobileSpacingBefore?: CaseSpacing;
 };
@@ -24,6 +25,7 @@ export type CaseVideoBlock = {
   src: string;
   poster?: string;
   hasAudio?: boolean;
+  preload?: "none" | "metadata" | "auto";
   spacingBefore?: CaseSpacing;
   mobileSpacingBefore?: CaseSpacing;
 };

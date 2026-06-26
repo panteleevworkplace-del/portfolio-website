@@ -6,6 +6,7 @@ const casePath = "/cases/mts-your-business";
 // - Add, remove, or reorder blocks inside `blocks` to change the page flow.
 // - Use `mobileSpacingBefore` only when mobile needs a different gap.
 // - Use `hasAudio: true` only when a video needs the sound button.
+// - Use `preload: "auto"` only when a video must load immediately.
 const assets = {
   introVideo: `${casePath}/mts-video-01.mp4`,
   websiteOverview: `${casePath}/mts-image-01.jpg`,
@@ -26,6 +27,7 @@ export const mtsYourBusinessCase: PortfolioCase = {
       type: "video",
       src: assets.introVideo,
       hasAudio: true,
+      preload: "none",
       spacingBefore: "s",
       mobileSpacingBefore: "xs",
     },
@@ -103,6 +105,7 @@ export const mtsYourBusinessCase: PortfolioCase = {
       type: "video",
       src: assets.resultsVideo,
       hasAudio: true,
+      preload: "none",
       spacingBefore: "m",
       mobileSpacingBefore: "xs",
     },

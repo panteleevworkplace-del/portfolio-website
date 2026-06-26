@@ -13,8 +13,7 @@
 }
 
 .case-intro,
-.case-text,
-.case-not-found {
+.case-text {
   width: 100%;
   max-width: var(--case-text-max);
   margin-inline: auto;
@@ -22,8 +21,7 @@
 }
 
 .case-intro h1,
-.case-text h2,
-.case-not-found h1 {
+.case-text h2 {
   margin: 0;
   font-family: var(--font-main);
   font-weight: 600;
@@ -31,14 +29,12 @@
   line-height: 0.86;
 }
 
-.case-intro h1,
-.case-not-found h1 {
+.case-intro h1 {
   font-size: 70px;
 }
 
 .case-intro p,
-.case-text p,
-.case-not-found p {
+.case-text p {
   margin: 0;
   font-family: var(--font-number);
   font-size: 20px;
@@ -47,8 +43,7 @@
   letter-spacing: 0;
 }
 
-.case-intro p,
-.case-not-found p {
+.case-intro p {
   margin-top: 14px;
 }
 
@@ -174,35 +169,6 @@
   }
 }
 
-.case-page--not-found {
-  display: grid;
-  place-items: center;
-}
-
-.case-not-found a {
-  display: inline-block;
-  margin-top: 40px;
-  font-family: var(--font-main);
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  transition: color 180ms ease;
-}
-
-.case-not-found h1 {
-  font-size: clamp(56px, 4vw, 78px);
-}
-
-.case-not-found p {
-  margin-top: 18px;
-}
-
-@media (hover: hover) {
-  .case-not-found a:hover {
-    color: var(--acid);
-  }
-}
-
 @media (max-width: 900px) {
   .case-page {
     --case-text-max: 500px;
@@ -216,23 +182,14 @@
     font-size: clamp(40px, 10.256vw, 54px);
   }
 
-  .case-not-found h1 {
-    font-size: clamp(40px, 10.256vw, 48px);
-  }
-
   .case-intro p,
-  .case-text p,
-  .case-not-found p {
+  .case-text p {
     font-size: clamp(15px, 3.846vw, 17px);
     line-height: 1.15;
   }
 
   .case-intro p {
     margin-top: 14px;
-  }
-
-  .case-not-found p {
-    margin-top: 12px;
   }
 
   .case-text h2 {
