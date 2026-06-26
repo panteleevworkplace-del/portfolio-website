@@ -15,6 +15,8 @@ const assets = {
   activityModal: `${casePath}/mts-image-03.jpg`,
   articleLayouts: `${casePath}/mts-image-04.jpg`,
   resultsVideo: `${casePath}/mts-video-02.mp4`,
+  introVideoLow: `${casePath}/mts-video-01-low.mp4`,
+  resultsVideoLow: `${casePath}/mts-video-02-low.mp4`,
 };
 
 export const mtsYourBusinessCase: PortfolioCase = {
@@ -26,6 +28,7 @@ export const mtsYourBusinessCase: PortfolioCase = {
     {
       type: "video",
       src: assets.introVideo,
+      lowSrc: assets.introVideoLow,
       hasAudio: true,
       preload: "none",
       spacingBefore: "s",
@@ -104,6 +107,7 @@ export const mtsYourBusinessCase: PortfolioCase = {
     {
       type: "video",
       src: assets.resultsVideo,
+      lowSrc: assets.resultsVideoLow,
       hasAudio: true,
       preload: "none",
       spacingBefore: "m",

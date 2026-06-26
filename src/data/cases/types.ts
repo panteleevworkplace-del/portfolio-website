@@ -23,6 +23,7 @@ export type CaseImageBlock = {
 export type CaseVideoBlock = {
   type: "video";
   src: string;
+  lowSrc?: string;
   poster?: string;
   hasAudio?: boolean;
   preload?: "none" | "metadata" | "auto";

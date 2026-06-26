@@ -40,6 +40,11 @@
   backface-visibility: hidden;
 }
 
+.juicy-section--safari .juicy-track {
+  will-change: auto;
+  backface-visibility: visible;
+}
+
 .juicy-label-wrap {
   flex: 0 0 auto;
   width: clamp(190px, 16vw, 310px);

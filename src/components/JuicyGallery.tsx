@@ -11,10 +11,14 @@ const MAX_SCROLL_FACTOR = 1.12;
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
+const isSafariBrowser = () =>
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 export default function JuicyGallery() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const isSafari = useMemo(isSafariBrowser, []);
 
   const groups = useMemo(() => {
     const result = [];
@@ -55,13 +59,16 @@ export default function JuicyGallery() {
 
       const rawTranslate = -horizontalDistance * progress;
       const pixelRatio = window.devicePixelRatio || 1;
-      const translate =
-        Math.round(rawTranslate * pixelRatio) / pixelRatio;
+      const translate = isSafari
+        ? Math.round(rawTranslate)
+        : Math.round(rawTranslate * pixelRatio) / pixelRatio;
 
       if (translate === lastTranslate) return;
 
       lastTranslate = translate;
-      track.style.transform = `translate3d(${translate}px, 0, 0)`;
+      track.style.transform = isSafari
+        ? `translateX(${translate}px)`
+        : `translate3d(${translate}px, 0, 0)`;
     };
 
     const updateMeasurements = () => {
@@ -151,10 +158,15 @@ export default function JuicyGallery() {
       mediaQuery.removeEventListener("change", requestMeasurementsUpdate);
       track.style.transform = "none";
     };
-  }, []);
+  }, [isSafari]);
 
   return (
-    <section className="section juicy-section" ref={sectionRef}>
+    <section
+      className={`section juicy-section${
+        isSafari ? " juicy-section--safari" : ""
+      }`}
+      ref={sectionRef}
+    >
       <div className="juicy-mobile-heading">
         <div className="juicy-number">
           <img src="/icons/infinity.svg" alt="" aria-hidden="true" />

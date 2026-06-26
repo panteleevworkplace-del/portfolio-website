@@ -21,11 +21,43 @@ type IdleWindow = Window &
     cancelIdleCallback?: (handle: number) => void;
   };
 
+type NetworkConnection = {
+  effectiveType?: string;
+  saveData?: boolean;
+};
+
+type NavigatorWithConnection = Navigator & {
+  connection?: NetworkConnection;
+  mozConnection?: NetworkConnection;
+  webkitConnection?: NetworkConnection;
+};
+
 const preloadImage = (src: string) => {
   const image = new Image();
   image.decoding = "async";
   image.src = src;
   image.decode?.().catch(() => undefined);
+};
+
+const getConnection = () => {
+  const nav = navigator as NavigatorWithConnection;
+
+  return nav.connection ?? nav.mozConnection ?? nav.webkitConnection;
+};
+
+const shouldUseLowVideo = (block: CaseVideoBlock) => {
+  if (!block.lowSrc) return false;
+
+  const connection = getConnection();
+  const effectiveType = connection?.effectiveType;
+  const isSlowConnection =
+    connection?.saveData === true ||
+    effectiveType === "slow-2g" ||
+    effectiveType === "2g" ||
+    effectiveType === "3g";
+  const isCompactViewport = window.matchMedia("(max-width: 900px)").matches;
+
+  return isSlowConnection || isCompactViewport;
 };
 
 const blockClass = (block: CaseBlock) => {
@@ -78,7 +110,15 @@ function CaseImage({
 
 function CaseVideo({ block }: { block: CaseVideoBlock }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const slowSwitchTimerRef = useRef<number | undefined>(undefined);
+  const [videoSrc, setVideoSrc] = useState(() =>
+    shouldUseLowVideo(block) ? block.lowSrc ?? block.src : block.src,
+  );
   const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    setVideoSrc(shouldUseLowVideo(block) ? block.lowSrc ?? block.src : block.src);
+  }, [block]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -119,11 +159,54 @@ function CaseVideo({ block }: { block: CaseVideoBlock }) {
     observer.observe(video);
 
     return () => {
+      window.clearTimeout(slowSwitchTimerRef.current);
       preloadObserver?.disconnect();
       observer.disconnect();
       video.pause();
     };
   }, [block.preload]);
+
+  const switchToLowVideo = () => {
+    const video = videoRef.current;
+    if (!video || !block.lowSrc || videoSrc === block.lowSrc) return;
+
+    const currentTime = video.currentTime;
+    const shouldResume = !video.paused;
+
+    setVideoSrc(block.lowSrc);
+
+    requestAnimationFrame(() => {
+      const nextVideo = videoRef.current;
+      if (!nextVideo) return;
+
+      const restoreTime = () => {
+        nextVideo.currentTime = currentTime;
+        nextVideo.removeEventListener("loadedmetadata", restoreTime);
+
+        if (shouldResume) {
+          nextVideo.play().catch(() => undefined);
+        }
+      };
+
+      nextVideo.addEventListener("loadedmetadata", restoreTime);
+      nextVideo.load();
+    });
+  };
+
+  const watchForSlowStart = () => {
+    if (!block.lowSrc || videoSrc === block.lowSrc) return;
+
+    window.clearTimeout(slowSwitchTimerRef.current);
+
+    slowSwitchTimerRef.current = window.setTimeout(() => {
+      const video = videoRef.current;
+      if (!video || video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+        return;
+      }
+
+      switchToLowVideo();
+    }, 1400);
+  };
 
   const toggleSound = () => {
     const video = videoRef.current;
@@ -144,13 +227,15 @@ function CaseVideo({ block }: { block: CaseVideoBlock }) {
       <div className="case-video-shell">
         <video
           ref={videoRef}
-          src={block.src}
+          src={videoSrc}
           poster={block.poster}
           muted
           loop
           playsInline
           preload={block.preload ?? "none"}
           aria-label="Case video"
+          onWaiting={watchForSlowStart}
+          onCanPlay={() => window.clearTimeout(slowSwitchTimerRef.current)}
         />
 
         {block.hasAudio ? (

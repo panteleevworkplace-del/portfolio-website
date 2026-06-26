@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Works from './components/Works';
@@ -9,6 +9,12 @@ import Contact from './components/Contact';
 import { getCaseBySlug } from './data/cases';
 import CaseStudyPage from './pages/case-study-page';
 import NotFoundPage from './pages/not-found-page';
+
+const getLocationSnapshot = () =>
+  `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+const isSafariBrowser = () =>
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 function SvgFilters() {
   return (
@@ -80,7 +86,13 @@ function SvgFilters() {
 
 function HomePage() {
   useEffect(() => {
-    if (!window.location.hash) return;
+    if (!window.location.hash) {
+      const frameId = requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+      });
+
+      return () => cancelAnimationFrame(frameId);
+    }
 
     const scrollToHashTarget = () => {
       const target = document.querySelector(window.location.hash);
@@ -111,10 +123,28 @@ function HomePage() {
 }
 
 export default function App() {
-  const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
+  const [locationSnapshot, setLocationSnapshot] = useState(getLocationSnapshot);
+  const pathname =
+    locationSnapshot.split(/[?#]/)[0].replace(/\/+$/, "") || "/";
   const caseMatch = pathname.match(/^\/cases\/([^/]+)$/);
   const portfolioCase = caseMatch ? getCaseBySlug(caseMatch[1]) : undefined;
   const isHomePage = pathname === "/";
+
+  useEffect(() => {
+    const updateLocation = () => {
+      setLocationSnapshot(getLocationSnapshot());
+    };
+
+    document.documentElement.classList.toggle("is-safari", isSafariBrowser());
+
+    window.addEventListener("popstate", updateLocation);
+    window.addEventListener("portfolio:navigate", updateLocation);
+
+    return () => {
+      window.removeEventListener("popstate", updateLocation);
+      window.removeEventListener("portfolio:navigate", updateLocation);
+    };
+  }, []);
 
   return (
     <>
