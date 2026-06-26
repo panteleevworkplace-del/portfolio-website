@@ -67,6 +67,7 @@ export const galleryImages = [
 
 export type JuicyItem = {
   image: string;
+  mobileSrc?: string;
   alt: string;
   size: "small" | "medium" | "large";
 };
@@ -74,61 +75,73 @@ export type JuicyItem = {
 export const juicyItems: JuicyItem[] = [
   {
     image: "/images/gallery/01.jpg",
+    mobileSrc: "/images/gallery/01-mobile.jpg",
     alt: "Portfolio gallery item 1",
     size: "small",
   },
   {
     image: "/images/gallery/02.jpg",
+    mobileSrc: "/images/gallery/02-mobile.jpg",
     alt: "Portfolio gallery item 2",
     size: "large",
   },
   {
     image: "/images/gallery/03.jpg",
+    mobileSrc: "/images/gallery/03-mobile.jpg",
     alt: "Portfolio gallery item 3",
     size: "medium",
   },
   {
     image: "/images/gallery/04.jpg",
+    mobileSrc: "/images/gallery/04-mobile.jpg",
     alt: "Portfolio gallery item 4",
     size: "medium",
   },
   {
     image: "/images/gallery/05.jpg",
+    mobileSrc: "/images/gallery/05-mobile.jpg",
     alt: "Portfolio gallery item 5",
     size: "large",
   },
   {
     image: "/images/gallery/06.jpg",
+    mobileSrc: "/images/gallery/06-mobile.jpg",
     alt: "Portfolio gallery item 6",
     size: "small",
   },
   {
     image: "/images/gallery/07.jpg",
+    mobileSrc: "/images/gallery/07-mobile.jpg",
     alt: "Portfolio gallery item 7",
     size: "medium",
   },
   {
     image: "/images/gallery/08.jpg",
+    mobileSrc: "/images/gallery/08-mobile.jpg",
     alt: "Portfolio gallery item 8",
     size: "large",
   },
   {
     image: "/images/gallery/09.jpg",
+    mobileSrc: "/images/gallery/09-mobile.jpg",
     alt: "Portfolio gallery item 9",
     size: "medium",
   },
   {
     image: "/images/gallery/10.jpg",
+    mobileSrc: "/images/gallery/10-mobile.jpg",
     alt: "Portfolio gallery item 10",
     size: "small",
   },
   {
     image: "/images/gallery/11.jpg",
+    mobileSrc: "/images/gallery/11-mobile.jpg",
     alt: "Portfolio gallery item 11",
     size: "medium",
   },
   {
     image: "/images/gallery/12.jpg",
+    mobileSrc: "/images/gallery/12-mobile.jpg",
     alt: "Portfolio gallery item 12",
     size: "large",
   },

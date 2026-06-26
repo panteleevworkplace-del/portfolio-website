@@ -1,6 +1,9 @@
 const smoothScrollTo = (targetId: string) => {
   const target = document.querySelector(targetId);
-  if (!target) return;
+  if (!target) {
+    window.location.href = `/${targetId}`;
+    return;
+  }
 
   const targetY = target.getBoundingClientRect().top + window.scrollY;
 
@@ -10,9 +13,13 @@ const smoothScrollTo = (targetId: string) => {
 export default function Header() {
   return (
     <header className="site-header">
-      <span className="site-header__item site-header__item--left">
+      <a
+        className="site-header__item site-header__item--left site-header__link"
+        href="/"
+        aria-label="Go to homepage"
+      >
         artem
-      </span>
+      </a>
 
       <button
         type="button"

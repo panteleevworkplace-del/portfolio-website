@@ -185,12 +185,22 @@ export default function JuicyGallery() {
                     className={`juicy-card juicy-card--${itemIndex + 1}`}
                     key={item.image}
                   >
-                    <img
-                      src={item.image}
-                      alt={item.alt}
-                      loading={absoluteIndex < GROUP_SIZE ? "eager" : "lazy"}
-                      decoding="async"
-                    />
+                    <picture>
+                      {item.mobileSrc ? (
+                        <source
+                          media="(max-width: 900px)"
+                          srcSet={item.mobileSrc}
+                        />
+                      ) : null}
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        loading={
+                          absoluteIndex < GROUP_SIZE ? "eager" : "lazy"
+                        }
+                        decoding="async"
+                      />
+                    </picture>
                   </figure>
                 );
               })}

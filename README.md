@@ -32,7 +32,7 @@ npm install
 Start development server:
 
 ```bash
-npm run dev
+f x
 ```
 
 Build production bundle:

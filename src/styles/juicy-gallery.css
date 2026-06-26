@@ -97,9 +97,14 @@
   contain: paint;
 }
 
+.juicy-card picture,
 .juicy-card img {
+  display: block;
   width: 100%;
   height: 100%;
+}
+
+.juicy-card img {
   object-fit: cover;
 }
 
