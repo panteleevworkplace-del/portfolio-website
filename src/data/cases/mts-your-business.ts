@@ -5,18 +5,18 @@ const casePath = "/cases/mts-your-business";
 // Edit notes:
 // - Add, remove, or reorder blocks inside `blocks` to change the page flow.
 // - Use `mobileSpacingBefore` only when mobile needs a different gap.
-// - Use `hasAudio: true` only when a video needs the sound button.
-// - Use `preload: "auto"` only when a video must load immediately.
+// - Use `priority: true` only for the main video that should start early.
+// - For videos, set `poster`, `priority`, `preload`, and `hasAudio` directly.
 const assets = {
   introVideo: `${casePath}/mts-video-01.mp4`,
+  introVideoPoster: `${casePath}/mts-video-01-poster.jpg`,
   websiteOverview: `${casePath}/mts-image-01.jpg`,
   websiteOverviewMobile: `${casePath}/mts-image-01-mobile.jpg`,
   registrationForm: `${casePath}/mts-image-02.jpg`,
   activityModal: `${casePath}/mts-image-03.jpg`,
   articleLayouts: `${casePath}/mts-image-04.jpg`,
   resultsVideo: `${casePath}/mts-video-02.mp4`,
-  introVideoLow: `${casePath}/mts-video-01-low.mp4`,
-  resultsVideoLow: `${casePath}/mts-video-02-low.mp4`,
+  resultsVideoPoster: `${casePath}/mts-video-02-poster.jpg`,
 };
 
 export const mtsYourBusinessCase: PortfolioCase = {
@@ -28,9 +28,10 @@ export const mtsYourBusinessCase: PortfolioCase = {
     {
       type: "video",
       src: assets.introVideo,
-      lowSrc: assets.introVideoLow,
+      poster: assets.introVideoPoster,
       hasAudio: true,
-      preload: "none",
+      priority: true,
+      preload: "auto",
       spacingBefore: "s",
       mobileSpacingBefore: "xs",
     },
@@ -107,7 +108,7 @@ export const mtsYourBusinessCase: PortfolioCase = {
     {
       type: "video",
       src: assets.resultsVideo,
-      lowSrc: assets.resultsVideoLow,
+      poster: assets.resultsVideoPoster,
       hasAudio: true,
       preload: "none",
       spacingBefore: "m",

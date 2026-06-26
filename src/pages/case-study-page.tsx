@@ -7,6 +7,7 @@ import {
   type PortfolioCase,
   getNextCase,
 } from "../data/cases";
+import { navigateTo, shouldHandleInternalClick } from "../navigation";
 
 type CaseStudyPageProps = {
   portfolioCase: PortfolioCase;
@@ -21,43 +22,11 @@ type IdleWindow = Window &
     cancelIdleCallback?: (handle: number) => void;
   };
 
-type NetworkConnection = {
-  effectiveType?: string;
-  saveData?: boolean;
-};
-
-type NavigatorWithConnection = Navigator & {
-  connection?: NetworkConnection;
-  mozConnection?: NetworkConnection;
-  webkitConnection?: NetworkConnection;
-};
-
 const preloadImage = (src: string) => {
   const image = new Image();
   image.decoding = "async";
   image.src = src;
   image.decode?.().catch(() => undefined);
-};
-
-const getConnection = () => {
-  const nav = navigator as NavigatorWithConnection;
-
-  return nav.connection ?? nav.mozConnection ?? nav.webkitConnection;
-};
-
-const shouldUseLowVideo = (block: CaseVideoBlock) => {
-  if (!block.lowSrc) return false;
-
-  const connection = getConnection();
-  const effectiveType = connection?.effectiveType;
-  const isSlowConnection =
-    connection?.saveData === true ||
-    effectiveType === "slow-2g" ||
-    effectiveType === "2g" ||
-    effectiveType === "3g";
-  const isCompactViewport = window.matchMedia("(max-width: 900px)").matches;
-
-  return isSlowConnection || isCompactViewport;
 };
 
 const blockClass = (block: CaseBlock) => {
@@ -110,15 +79,8 @@ function CaseImage({
 
 function CaseVideo({ block }: { block: CaseVideoBlock }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const slowSwitchTimerRef = useRef<number | undefined>(undefined);
-  const [videoSrc, setVideoSrc] = useState(() =>
-    shouldUseLowVideo(block) ? block.lowSrc ?? block.src : block.src,
-  );
   const [isMuted, setIsMuted] = useState(true);
-
-  useEffect(() => {
-    setVideoSrc(shouldUseLowVideo(block) ? block.lowSrc ?? block.src : block.src);
-  }, [block]);
+  const preloadMode = block.priority ? "auto" : block.preload ?? "none";
 
   useEffect(() => {
     const video = videoRef.current;
@@ -127,86 +89,42 @@ function CaseVideo({ block }: { block: CaseVideoBlock }) {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) return;
 
-    let preloadObserver: IntersectionObserver | undefined;
+    let isVisibleEnough = false;
 
-    if ((block.preload ?? "none") === "none") {
-      preloadObserver = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry.isIntersecting) return;
+    const playVideo = () => {
+      if (!isVisibleEnough) return;
 
-          video.preload = "metadata";
-          video.load();
-          preloadObserver?.disconnect();
-        },
-        { rootMargin: "700px 0px", threshold: 0 },
-      );
-
-      preloadObserver.observe(video);
-    }
+      video.play().catch(() => undefined);
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => undefined);
+        isVisibleEnough = entry.isIntersecting;
+
+        if (isVisibleEnough) {
+          playVideo();
           return;
         }
 
         video.pause();
       },
-      { threshold: 0.55 },
+      { rootMargin: "160px 0px", threshold: 0.18 },
     );
+
+    if (preloadMode === "auto") {
+      video.preload = "auto";
+      video.load();
+      video.addEventListener("canplay", playVideo);
+    }
 
     observer.observe(video);
 
     return () => {
-      window.clearTimeout(slowSwitchTimerRef.current);
-      preloadObserver?.disconnect();
+      video.removeEventListener("canplay", playVideo);
       observer.disconnect();
       video.pause();
     };
-  }, [block.preload]);
-
-  const switchToLowVideo = () => {
-    const video = videoRef.current;
-    if (!video || !block.lowSrc || videoSrc === block.lowSrc) return;
-
-    const currentTime = video.currentTime;
-    const shouldResume = !video.paused;
-
-    setVideoSrc(block.lowSrc);
-
-    requestAnimationFrame(() => {
-      const nextVideo = videoRef.current;
-      if (!nextVideo) return;
-
-      const restoreTime = () => {
-        nextVideo.currentTime = currentTime;
-        nextVideo.removeEventListener("loadedmetadata", restoreTime);
-
-        if (shouldResume) {
-          nextVideo.play().catch(() => undefined);
-        }
-      };
-
-      nextVideo.addEventListener("loadedmetadata", restoreTime);
-      nextVideo.load();
-    });
-  };
-
-  const watchForSlowStart = () => {
-    if (!block.lowSrc || videoSrc === block.lowSrc) return;
-
-    window.clearTimeout(slowSwitchTimerRef.current);
-
-    slowSwitchTimerRef.current = window.setTimeout(() => {
-      const video = videoRef.current;
-      if (!video || video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
-        return;
-      }
-
-      switchToLowVideo();
-    }, 1400);
-  };
+  }, [preloadMode]);
 
   const toggleSound = () => {
     const video = videoRef.current;
@@ -227,15 +145,13 @@ function CaseVideo({ block }: { block: CaseVideoBlock }) {
       <div className="case-video-shell">
         <video
           ref={videoRef}
-          src={videoSrc}
+          src={block.src}
           poster={block.poster}
           muted
           loop
           playsInline
-          preload={block.preload ?? "none"}
+          preload={preloadMode}
           aria-label="Case video"
-          onWaiting={watchForSlowStart}
-          onCanPlay={() => window.clearTimeout(slowSwitchTimerRef.current)}
         />
 
         {block.hasAudio ? (
@@ -343,7 +259,16 @@ export default function CaseStudyPage({ portfolioCase }: CaseStudyPageProps) {
         })}
       </div>
 
-      <a className="case-next" href={`/cases/${nextCase.slug}`}>
+      <a
+        className="case-next"
+        href={`/cases/${nextCase.slug}`}
+        onClick={(event) => {
+          if (!shouldHandleInternalClick(event)) return;
+
+          event.preventDefault();
+          navigateTo(`/cases/${nextCase.slug}`);
+        }}
+      >
         <span>next case</span>
         <img src="/icons/next-case-icon.svg" alt="" aria-hidden="true" />
       </a>

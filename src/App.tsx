@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import { getCaseBySlug } from './data/cases';
 import CaseStudyPage from './pages/case-study-page';
 import NotFoundPage from './pages/not-found-page';
+import { NAVIGATION_EVENT, scrollToHashTarget } from './navigation';
 
 const getLocationSnapshot = () =>
   `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -79,6 +80,36 @@ function SvgFilters() {
             yChannelSelector="G"
           />
         </filter>
+        <filter
+          id="wavy-border-filter-safari"
+          x="-14%"
+          y="-14%"
+          width="128%"
+          height="128%"
+          colorInterpolationFilters="sRGB"
+        >
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.016 0.05"
+            numOctaves="1"
+            seed="8"
+            result="noise"
+          >
+            <animate
+              attributeName="baseFrequency"
+              dur="9s"
+              values="0.016 0.05;0.022 0.042;0.016 0.05"
+              repeatCount="indefinite"
+            />
+          </feTurbulence>
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="8"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
       </defs>
     </svg>
   );
@@ -94,17 +125,10 @@ function HomePage() {
       return () => cancelAnimationFrame(frameId);
     }
 
-    const scrollToHashTarget = () => {
-      const target = document.querySelector(window.location.hash);
-      if (!target) return;
-
-      const targetY = target.getBoundingClientRect().top + window.scrollY;
-
-      window.scrollTo(0, targetY);
-    };
-
     const frameId = requestAnimationFrame(() => {
-      requestAnimationFrame(scrollToHashTarget);
+      requestAnimationFrame(() => {
+        scrollToHashTarget(window.location.hash);
+      });
     });
 
     return () => cancelAnimationFrame(frameId);
@@ -138,11 +162,11 @@ export default function App() {
     document.documentElement.classList.toggle("is-safari", isSafariBrowser());
 
     window.addEventListener("popstate", updateLocation);
-    window.addEventListener("portfolio:navigate", updateLocation);
+    window.addEventListener(NAVIGATION_EVENT, updateLocation);
 
     return () => {
       window.removeEventListener("popstate", updateLocation);
-      window.removeEventListener("portfolio:navigate", updateLocation);
+      window.removeEventListener(NAVIGATION_EVENT, updateLocation);
     };
   }, []);
 

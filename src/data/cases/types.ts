@@ -23,9 +23,9 @@ export type CaseImageBlock = {
 export type CaseVideoBlock = {
   type: "video";
   src: string;
-  lowSrc?: string;
-  poster?: string;
+  poster: string;
   hasAudio?: boolean;
+  priority?: boolean;
   preload?: "none" | "metadata" | "auto";
   spacingBefore?: CaseSpacing;
   mobileSpacingBefore?: CaseSpacing;
