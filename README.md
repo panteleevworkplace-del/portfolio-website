@@ -236,17 +236,20 @@ Notes:
 
 ## Browser Notes
 
-- Safari desktop uses a static lightweight `feTurbulence` border fallback.
-- Chrome/Firefox desktop can use the animated wavy border.
-- Mobile keeps the static border behavior for performance.
+Wavy border filters:
+
+- Chrome/Firefox desktop use the default animated `#wavy-border-filter`.
+- Safari desktop uses a lighter animated `#wavy-border-filter-safari` fallback.
+- Safari desktop fallback keeps animation, but reduces the cost with `numOctaves="1"`, `scale="8"`, and a slower `dur="9s"` baseFrequency animation.
+- Mobile uses `#wavy-border-filter-mobile-static` and keeps the static border behavior for performance.
 
 ## Important Behavior Notes
 
 Main page:
 
-- Mobile wavy borders are static/non-animated to avoid iPhone/Safari heating.
-- Desktop wavy border animation remains active in non-Safari desktop browsers.
-- Safari desktop uses a static lightweight `feTurbulence` border fallback.
+- Mobile wavy borders use `#wavy-border-filter-mobile-static` and stay static/non-animated to avoid iPhone/Safari heating.
+- Chrome/Firefox desktop use the default animated `#wavy-border-filter`.
+- Safari desktop uses the compromise animated `#wavy-border-filter-safari`: `numOctaves="1"`, `scale="8"`, and slower `dur="9s"` baseFrequency animation.
 - JuicyGallery uses native horizontal scroll below `901px`.
 - JuicyGallery uses sticky desktop behavior from `901px` to `2299px`.
 - JuicyGallery switches to static mode at `2300px+`.

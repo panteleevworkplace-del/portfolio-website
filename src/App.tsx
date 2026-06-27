@@ -80,24 +80,31 @@ function SvgFilters() {
           />
         </filter>
         <filter
-          id="wavy-border-filter-safari-static"
-          x="-20%"
-          y="-20%"
-          width="140%"
-          height="140%"
+          id="wavy-border-filter-safari"
+          x="-14%"
+          y="-14%"
+          width="128%"
+          height="128%"
           colorInterpolationFilters="sRGB"
         >
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.018 0.055"
-            numOctaves="2"
+            baseFrequency="0.016 0.05"
+            numOctaves="1"
             seed="8"
             result="noise"
-          />
+          >
+            <animate
+              attributeName="baseFrequency"
+              dur="9s"
+              values="0.016 0.05;0.022 0.042;0.016 0.05"
+              repeatCount="indefinite"
+            />
+          </feTurbulence>
           <feDisplacementMap
             in="SourceGraphic"
             in2="noise"
-            scale="10"
+            scale="8"
             xChannelSelector="R"
             yChannelSelector="G"
           />
