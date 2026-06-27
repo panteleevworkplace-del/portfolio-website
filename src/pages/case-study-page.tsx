@@ -7,7 +7,6 @@ import {
   type PortfolioCase,
   getNextCase,
 } from "../data/cases";
-import { navigateTo, shouldHandleInternalClick } from "../navigation";
 
 type CaseStudyPageProps = {
   portfolioCase: PortfolioCase;
@@ -80,7 +79,7 @@ function CaseImage({
 function CaseVideo({ block }: { block: CaseVideoBlock }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
-  const preloadMode = block.priority ? "auto" : block.preload ?? "none";
+  const preloadMode = block.priority ? "auto" : (block.preload ?? "none");
 
   useEffect(() => {
     const video = videoRef.current;
@@ -236,6 +235,11 @@ export default function CaseStudyPage({ portfolioCase }: CaseStudyPageProps) {
 
   return (
     <main className="case-page">
+      <a className="case-back" href="/" aria-label="Go to homepage">
+        <img src="/icons/arrow-link.svg" alt="" aria-hidden="true" />
+        take me back
+      </a>
+
       <header className="case-intro">
         <h1>{portfolioCase.title}</h1>
         <p>{portfolioCase.intro}</p>
@@ -259,16 +263,7 @@ export default function CaseStudyPage({ portfolioCase }: CaseStudyPageProps) {
         })}
       </div>
 
-      <a
-        className="case-next"
-        href={`/cases/${nextCase.slug}`}
-        onClick={(event) => {
-          if (!shouldHandleInternalClick(event)) return;
-
-          event.preventDefault();
-          navigateTo(`/cases/${nextCase.slug}`);
-        }}
-      >
+      <a className="case-next" href={`/cases/${nextCase.slug}`}>
         <span>next case</span>
         <img src="/icons/next-case-icon.svg" alt="" aria-hidden="true" />
       </a>

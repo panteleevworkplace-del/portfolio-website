@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Works from './components/Works';
@@ -9,7 +9,6 @@ import Contact from './components/Contact';
 import { getCaseBySlug } from './data/cases';
 import CaseStudyPage from './pages/case-study-page';
 import NotFoundPage from './pages/not-found-page';
-import { NAVIGATION_EVENT, scrollToHashTarget } from './navigation';
 
 const getLocationSnapshot = () =>
   `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -125,10 +124,17 @@ function HomePage() {
       return () => cancelAnimationFrame(frameId);
     }
 
+    const scrollToHashTarget = () => {
+      const target = document.querySelector(window.location.hash);
+      if (!target) return;
+
+      const targetY = target.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo(0, targetY);
+    };
+
     const frameId = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        scrollToHashTarget(window.location.hash);
-      });
+      requestAnimationFrame(scrollToHashTarget);
     });
 
     return () => cancelAnimationFrame(frameId);
@@ -147,7 +153,7 @@ function HomePage() {
 }
 
 export default function App() {
-  const [locationSnapshot, setLocationSnapshot] = useState(getLocationSnapshot);
+  const locationSnapshot = getLocationSnapshot();
   const pathname =
     locationSnapshot.split(/[?#]/)[0].replace(/\/+$/, "") || "/";
   const caseMatch = pathname.match(/^\/cases\/([^/]+)$/);
@@ -155,25 +161,13 @@ export default function App() {
   const isHomePage = pathname === "/";
 
   useEffect(() => {
-    const updateLocation = () => {
-      setLocationSnapshot(getLocationSnapshot());
-    };
-
     document.documentElement.classList.toggle("is-safari", isSafariBrowser());
-
-    window.addEventListener("popstate", updateLocation);
-    window.addEventListener(NAVIGATION_EVENT, updateLocation);
-
-    return () => {
-      window.removeEventListener("popstate", updateLocation);
-      window.removeEventListener(NAVIGATION_EVENT, updateLocation);
-    };
   }, []);
 
   return (
     <>
       <SvgFilters />
-      <Header />
+      {portfolioCase ? null : <Header />}
       {caseMatch ? (
         portfolioCase ? (
           <CaseStudyPage portfolioCase={portfolioCase} />

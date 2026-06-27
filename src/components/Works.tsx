@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { projects } from "../data/portfolio";
-import { navigateTo, shouldHandleInternalClick } from "../navigation";
 
 const INITIAL_VISIBLE_PROJECTS = 4;
 
@@ -96,12 +95,6 @@ export default function Works() {
                 className="work-image"
                 href={project.href}
                 aria-label={`${project.title} case study`}
-                onClick={(event) => {
-                  if (!shouldHandleInternalClick(event)) return;
-
-                  event.preventDefault();
-                  navigateTo(project.href);
-                }}
               >
                 <picture className="work-picture">
                   <source

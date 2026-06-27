@@ -8,8 +8,40 @@
   --case-space-l: 120px;
   --case-space-xl: 160px;
 
+  position: relative;
   min-height: 100vh;
   padding: 160px var(--page-pad) 90px;
+}
+
+.case-back {
+  position: absolute;
+  top: 58px;
+  left: var(--page-pad);
+  width: max-content;
+  max-width: calc(100vw - var(--page-pad) * 2);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 8px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: clamp(20px, 1.528vw, 29px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  color: var(--fg);
+  transition:
+    color 100ms linear,
+    border-color 100ms linear;
+}
+
+.case-back img {
+  width: 17px;
+  height: auto;
+  flex: 0 0 auto;
+  transform: rotate(180deg);
+  transition: filter 100ms linear;
 }
 
 .case-intro,
@@ -159,6 +191,16 @@
 }
 
 @media (hover: hover) {
+  .case-back:hover {
+    color: var(--acid);
+    border-color: var(--acid);
+  }
+
+  .case-back:hover img {
+    filter: brightness(0) saturate(100%) invert(63%) sepia(96%) saturate(2173%)
+      hue-rotate(80deg) brightness(119%) contrast(126%);
+  }
+
   .case-next:hover {
     color: var(--acid);
   }
@@ -174,8 +216,16 @@
     --case-text-max: 500px;
     --case-radius: 8px;
 
-    padding-top: 100px;
+    padding-top: 112px;
     padding-bottom: 70px;
+  }
+
+  .case-back {
+    top: 24px;
+    max-width: calc(100vw - var(--page-pad) * 2);
+    min-height: clamp(38px, 10.256vw, 50px);
+    padding: 8px 13px;
+    font-size: clamp(17px, 4.615vw, 22px);
   }
 
   .case-intro h1 {
