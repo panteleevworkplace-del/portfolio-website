@@ -84,7 +84,8 @@
 
 @media (min-width: 901px) {
   .is-safari .wavy-border::after {
-    filter: url(#wavy-border-filter-safari);
+    filter: url(#wavy-border-filter-safari-static);
+    animation: none;
   }
 }
 

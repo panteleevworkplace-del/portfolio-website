@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Works from './components/Works';
-import JuicyGallery from './components/JuicyGallery';
-import Clients from './components/Clients';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-import { getCaseBySlug } from './data/cases';
-import CaseStudyPage from './pages/case-study-page';
-import NotFoundPage from './pages/not-found-page';
+import { useEffect } from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Works from "./components/Works";
+import JuicyGallery from "./components/JuicyGallery";
+import Clients from "./components/Clients";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
+import { getCaseBySlug } from "./data/cases";
+import CaseStudyPage from "./pages/case-study-page";
+import NotFoundPage from "./pages/not-found-page";
 
 const getLocationSnapshot = () =>
   `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -80,31 +80,24 @@ function SvgFilters() {
           />
         </filter>
         <filter
-          id="wavy-border-filter-safari"
-          x="-14%"
-          y="-14%"
-          width="128%"
-          height="128%"
+          id="wavy-border-filter-safari-static"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="140%"
           colorInterpolationFilters="sRGB"
         >
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.016 0.05"
-            numOctaves="1"
+            baseFrequency="0.018 0.055"
+            numOctaves="2"
             seed="8"
             result="noise"
-          >
-            <animate
-              attributeName="baseFrequency"
-              dur="9s"
-              values="0.016 0.05;0.022 0.042;0.016 0.05"
-              repeatCount="indefinite"
-            />
-          </feTurbulence>
+          />
           <feDisplacementMap
             in="SourceGraphic"
             in2="noise"
-            scale="8"
+            scale="10"
             xChannelSelector="R"
             yChannelSelector="G"
           />
@@ -154,8 +147,7 @@ function HomePage() {
 
 export default function App() {
   const locationSnapshot = getLocationSnapshot();
-  const pathname =
-    locationSnapshot.split(/[?#]/)[0].replace(/\/+$/, "") || "/";
+  const pathname = locationSnapshot.split(/[?#]/)[0].replace(/\/+$/, "") || "/";
   const caseMatch = pathname.match(/^\/cases\/([^/]+)$/);
   const portfolioCase = caseMatch ? getCaseBySlug(caseMatch[1]) : undefined;
   const isHomePage = pathname === "/";

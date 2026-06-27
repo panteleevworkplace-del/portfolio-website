@@ -235,7 +235,7 @@
   .case-intro p,
   .case-text p {
     font-size: clamp(15px, 3.846vw, 17px);
-    line-height: 1.15;
+    line-height: 1.2;
   }
 
   .case-intro p {

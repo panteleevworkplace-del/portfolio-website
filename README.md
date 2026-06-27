@@ -32,7 +32,7 @@ npm install
 Start development server:
 
 ```bash
-f x
+npm run dev
 ```
 
 Build production bundle:
@@ -60,20 +60,42 @@ Then open the Network URL on a phone connected to the same Wi-Fi.
 
 ## Project Structure
 
+Shared app files:
+
 - `src/main.tsx` — app entry point.
-- `src/App.tsx` — page composition and shared SVG filters.
-- `src/components/` — page sections/components.
-- `src/data/portfolio.ts` — portfolio data and content.
-- `src/data/cases.ts` — case registry and next-case order.
-- `src/data/cases/` — individual case content files and shared types.
+- `src/App.tsx` — route-level page composition and shared SVG filters.
 - `src/styles.css` — CSS import-only aggregator.
-- `src/styles/` — section-based CSS files.
-- `public/images/` — project/site images.
-- `public/icons/` — icons and decorative SVGs.
+- `src/styles/base.css` — global foundation styles.
+- `public/icons/` — shared icons and decorative SVGs.
+
+Main page files:
+
+- `src/components/` — main page sections/components.
+- `src/data/portfolio.ts` — main page portfolio/work card data.
+- `src/styles/header-hero.css` — header, hero, and main-page wavy border styles.
+- `src/styles/works.css` — Works section.
+- `src/styles/juicy-gallery.css` — JuicyGallery section.
+- `src/styles/clients.css` — Clients section.
+- `src/styles/experience.css` — Experience section.
+- `src/styles/contact-footer.css` — Contact and Footer sections.
+- `public/images/` — main page images.
+
+Case page files:
+
+- `src/pages/case-study-page.tsx` — reusable case page template.
+- `src/pages/not-found-page.tsx` — fallback 404 page.
+- `src/data/cases.ts` — case registry and next-case order.
+- `src/data/cases/types.ts` — shared case/block types.
+- `src/data/cases/` — individual case content files.
+- `src/styles/case-study-page.css` — case page layout and typography.
+- `src/styles/not-found-page.css` — 404 page styles.
+- `public/cases/` — case page images, videos, and posters.
 
 ## Case Studies
 
 Case pages use one reusable template. Each case controls its own content and layout order through data, so most edits should happen in the case data file, not in React components.
+
+This section is only about inner case pages such as `/cases/mts-your-business`. Main page work cards live separately in `src/data/portfolio.ts`.
 
 Core files:
 
@@ -147,7 +169,7 @@ Video block:
   src: assets.heroVideo,
   poster: assets.heroVideoPoster,
   priority: true,
-  preload: "auto",
+  preload: "metadata",
   hasAudio: true,
   spacingBefore: "s",
   mobileSpacingBefore: "xs",
@@ -159,8 +181,8 @@ Video block:
 Video controls are intentionally explicit:
 
 - `priority: true` — use only for the main first video that should start early.
-- `preload: "auto"` — load immediately; usually paired with `priority: true`.
-- `preload: "none"` — do not load early; good for lower videos.
+- `preload: "metadata"` — load only basic video information first; this is the default recommendation.
+- `preload: "none"` — do not load early; useful for lower videos.
 - `hasAudio: true` — shows the sound/mute button.
 
 Spacing:
@@ -179,9 +201,12 @@ Editing notes inside case files should stay short. Put detailed reusable rules h
 
 `src/styles.css` controls CSS import and cascade order.
 
-Current CSS files:
+Shared CSS:
 
-- `src/styles/base.css`
+- `src/styles/base.css` — global foundation only.
+
+Main page CSS:
+
 - `src/styles/header-hero.css`
 - `src/styles/works.css`
 - `src/styles/juicy-gallery.css`
@@ -189,28 +214,52 @@ Current CSS files:
 - `src/styles/experience.css`
 - `src/styles/contact-footer.css`
 
+Case/secondary page CSS:
+
+- `src/styles/case-study-page.css`
+- `src/styles/not-found-page.css`
+
 Notes:
 
-- Mobile styles live inside the related section files.
+- Main page styles and case page styles should stay separated.
+- Mobile styles live inside the related section/page files.
 - `base.css` is only for global foundation styles.
-- Keep section-specific styles out of `base.css`.
+- Keep section-specific and page-specific styles out of `base.css`.
 
 ## Responsive Rules
 
 - Mobile/tablet styles: `max-width: 900px`.
 - Desktop starts at `901px`.
 - Always test both `900px` and `901px` after layout changes.
+- Main page changes should be tested with the homepage sections.
+- Case page changes should be tested on at least one real case page.
+
+## Browser Notes
+
+- Safari desktop uses a static lightweight `feTurbulence` border fallback.
+- Chrome/Firefox desktop can use the animated wavy border.
+- Mobile keeps the static border behavior for performance.
 
 ## Important Behavior Notes
 
+Main page:
+
 - Mobile wavy borders are static/non-animated to avoid iPhone/Safari heating.
-- Desktop wavy border animation remains active.
+- Desktop wavy border animation remains active in non-Safari desktop browsers.
+- Safari desktop uses a static lightweight `feTurbulence` border fallback.
 - JuicyGallery uses native horizontal scroll below `901px`.
 - JuicyGallery uses sticky desktop behavior from `901px` to `2299px`.
 - JuicyGallery switches to static mode at `2300px+`.
 - Clients uses a desktop orbit layout and a mobile static constellation.
 - Contact sticker/hearts are intentionally preserved.
 - Footer hides `artem` on mobile and restores it on desktop.
+
+Case pages:
+
+- Case pages use one reusable template and data-driven blocks.
+- Case media should stay linear and simple: no grids, sticky behavior, or horizontal scroll.
+- Case videos are local MP4 files with required posters.
+- Case mobile spacing can be adjusted per block with `mobileSpacingBefore`.
 
 ## Development Checklist
 
