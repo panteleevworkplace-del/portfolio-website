@@ -39,7 +39,6 @@
   transition: color 180ms ease;
 }
 
-.site-header__item--left:hover,
 .site-header__item--center:hover,
 .site-header__item--right:hover {
   color: var(--acid);

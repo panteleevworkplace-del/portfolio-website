@@ -15,7 +15,7 @@
 
 .case-back {
   position: absolute;
-  top: 58px;
+  top: 30px;
   left: var(--page-pad);
   width: max-content;
   max-width: calc(100vw - var(--page-pad) * 2);
@@ -25,7 +25,7 @@
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  font-size: clamp(20px, 1.528vw, 29px);
+  font-size: clamp(23px, 1.25vw, 26px);
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -216,7 +216,7 @@
     --case-text-max: 500px;
     --case-radius: 8px;
 
-    padding-top: 112px;
+    padding-top: 125px;
     padding-bottom: 70px;
   }
 
@@ -224,7 +224,7 @@
     top: 24px;
     max-width: calc(100vw - var(--page-pad) * 2);
     min-height: clamp(38px, 10.256vw, 50px);
-    padding: 8px 13px;
+    padding: 5px 13px;
     font-size: clamp(17px, 4.615vw, 22px);
   }
 

@@ -1,13 +1,9 @@
 export default function Header() {
   return (
     <header className="site-header">
-      <a
-        className="site-header__item site-header__item--left site-header__link"
-        href="/"
-        aria-label="Go to homepage"
-      >
+      <span className="site-header__item site-header__item--left">
         artem
-      </a>
+      </span>
 
       <a
         className="site-header__item site-header__item--center site-header__link"
