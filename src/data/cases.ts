@@ -1,4 +1,5 @@
 import { mtsYourBusinessCase } from "./cases/mts-your-business";
+import { sberTechConferenceCase } from "./cases/sber-tech-conference";
 import type { PortfolioCase } from "./cases/types";
 
 export type {
@@ -11,7 +12,10 @@ export type {
 } from "./cases/types";
 
 // Add future cases here. The next-case link follows this array order.
-export const cases: PortfolioCase[] = [mtsYourBusinessCase];
+export const cases: PortfolioCase[] = [
+  sberTechConferenceCase,
+  mtsYourBusinessCase,
+];
 
 export const getCaseBySlug = (slug: string) =>
   cases.find((item) => item.slug === slug);
