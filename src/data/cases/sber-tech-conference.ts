@@ -77,7 +77,7 @@ export const sberTechConferenceCase: PortfolioCase = {
       width: 2704,
       height: 1476,
       spacingBefore: "l",
-      mobileSpacingBefore: "xs",
+      mobileSpacingBefore: "s",
     },
     {
       type: "image",
@@ -113,7 +113,7 @@ export const sberTechConferenceCase: PortfolioCase = {
       width: 2704,
       height: 1476,
       spacingBefore: "m",
-      mobileSpacingBefore: "xs",
+      mobileSpacingBefore: "s",
     },
   ],
 };
