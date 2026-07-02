@@ -1,5 +1,6 @@
 import { mmsSkittlesCase } from "./cases/mms-skittles";
 import { mtsYourBusinessCase } from "./cases/mts-your-business";
+import { ozonEducationCase } from "./cases/ozon-education";
 import { sberTechConferenceCase } from "./cases/sber-tech-conference";
 import { snickersCase } from "./cases/snickers";
 import type { PortfolioCase } from "./cases/types";
@@ -15,6 +16,7 @@ export type {
 
 // Add future cases here. The next-case link follows this array order.
 export const cases: PortfolioCase[] = [
+  ozonEducationCase,
   mmsSkittlesCase,
   snickersCase,
   sberTechConferenceCase,
