@@ -79,7 +79,7 @@ function CaseImage({
 function CaseVideo({ block }: { block: CaseVideoBlock }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
-  const preloadMode = block.priority ? "auto" : (block.preload ?? "none");
+  const preloadMode = block.preload ?? (block.priority ? "auto" : "none");
 
   useEffect(() => {
     const video = videoRef.current;

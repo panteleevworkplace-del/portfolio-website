@@ -6,7 +6,8 @@ This file is the main project context for Codex. Read it before making any chang
 
 ## Project
 
-This is Artem Panteleev's portfolio website.
+This is Artem Panteleev's static portfolio website, built with Vite, React,
+and TypeScript.
 
 Repository / local project name:
 Portfolio_website
@@ -14,6 +15,7 @@ Portfolio_website
 Current work mode:
 
 - Build and preview locally.
+- Cloudflare Pages is the deployment target.
 - Cloudflare Pages live site: `https://artyarty.pages.dev/`.
 - Cloudflare Pages live site and GitHub may be outdated unless Artem says otherwise.
 - Do not rely on deployed Cloudflare Pages version as the source of truth.
@@ -34,8 +36,16 @@ The main page layout is considered finished for desktop and mobile.
 
 - Only fix visual/layout issues when Artem explicitly requests it or when a regression is confirmed.
 - Avoid broad refactors unless explicitly requested.
-- Preserve the current visual concept: dark grid, bold compressed typography, green accents, large rounded media blocks, playful/kitschy art direction.
+- Preserve the current visual concept: dark grid, bold compressed typography,
+  green accents, large rounded media blocks, playful/kitschy art direction.
+- Mobile homepage behavior is fragile; do not change it casually.
 - Do not change content, links, asset paths, section order, or behavior unless asked.
+- Case pages are data-driven. Add new cases through `src/data/cases/`,
+  `src/data/cases.ts`, and `public/cases/`.
+- Keep main page code/styles and case page code/styles separated.
+- Do not add a CMS, backend, or external runtime service.
+- Do not add GSAP or other heavy animation libraries.
+- Do not load external fonts at runtime.
 
 ## Important Files
 
@@ -189,7 +199,9 @@ Current behavior:
 
 Important:
 
-- Do not change sticky timing, scroll calculations, section height, viewport height, or transform logic unless the task is specifically about JuicyGallery.
+- Do not change sticky timing, scroll calculations, section height, viewport
+  height, or transform logic unless the task is specifically about
+  JuicyGallery.
 - Do not remove the `2300px+` static mode.
 - Do not reintroduce fixed magic `900px` as the main runtime scroll distance.
 - Do not add heavy animation libraries.
@@ -300,13 +312,15 @@ Asset folders:
 - `public/images/clients`
 - `public/images/experience`
 - `public/images/gallery`
+- `public/cases`
 
 Rules:
 
 - Keep icons in `public/icons`.
 - Keep client images in `public/images/clients`.
 - Keep experience images in `public/images/experience`.
-- Keep case images in `public/images/cases`.
+- Keep main page work card images in `public/images/cases`.
+- Keep case page assets in `public/cases`.
 - Do not move assets without updating all paths.
 - Do not delete image assets unless you prove they are unused by search.
 
@@ -417,9 +431,10 @@ When asked to work on this project:
 2. Explain the plan before editing.
 3. Edit only the required files.
 4. Keep changes minimal.
-5. Do not refactor unrelated code.
-6. Summarize changes after editing.
-7. If the change is visual, tell Artem what to check in the browser.
+5. Avoid unrelated refactors.
+6. Run `npm run build` before the final response.
+7. Summarize changes after editing.
+8. If the change is visual, tell Artem what to check in the browser.
 
 If Artem asks for a visual/layout change:
 

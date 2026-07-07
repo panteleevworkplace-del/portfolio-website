@@ -25,7 +25,12 @@ const assets = {
 export const ozonEducationCase: PortfolioCase = {
   slug: "ozon-education",
   title: "Ozon Education",
-  intro: `A visual refresh for Ozon's learning platform for sellers: new logo, clearer structure, updated 3D style, and a flexible system for courses, banners and promo materials. To help marketplace sellers easily understand how to grow inside the platform.`,
+  intro: [
+    "A visual refresh for Ozon's learning platform for sellers: new logo,",
+    "clearer structure, updated 3D style, and a flexible system for courses,",
+    "banners and promo materials. To help marketplace sellers easily understand",
+    "how to grow inside the platform.",
+  ].join(" "),
   blocks: [
     // 1. Main identity visual.
     {
@@ -35,14 +40,21 @@ export const ozonEducationCase: PortfolioCase = {
       width: 2704,
       height: 1426,
       spacingBefore: "s",
-      mobileSpacingBefore: "s",
+      mobileSpacingBefore: "xs",
     },
 
     // 2. Approach.
     {
       type: "text",
       title: "approach",
-      body: `The goal was to make Ozon Education feel clearer, lighter, and easier to use. I moved the platform away from a generic online university look and built a more practical visual system around seller education: courses, tools, products, analytics and growth. The result is a design language that feels closer to Ozon, works better across formats and is easier to scale.`,
+      body: [
+        "The goal was to make Ozon Education feel clearer, lighter, and easier",
+        "to use. I moved the platform away from a generic online university look",
+        "and built a more practical visual system around seller education:",
+        "courses, tools, products, analytics and growth. The result is a design",
+        "language that feels closer to Ozon, works better across formats and is",
+        "easier to scale.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -53,7 +65,7 @@ export const ozonEducationCase: PortfolioCase = {
       width: 2704,
       height: 1224,
       spacingBefore: "m",
-      mobileSpacingBefore: "s",
+      mobileSpacingBefore: "xs",
     },
     {
       type: "image",
@@ -63,14 +75,22 @@ export const ozonEducationCase: PortfolioCase = {
       width: 2704,
       height: 780,
       spacingBefore: "s",
-      mobileSpacingBefore: "s",
+      mobileSpacingBefore: "xs",
     },
 
     // 3. Visual system.
     {
       type: "text",
       title: "system",
-      body: `The visual system works like a constructor. Combinations of 3D objects, abstract shapes, gradients, and patterns fit into one flexible identity. These elements can be mixed in different ways depending on the format. The system stays recognizable through Ozon's blue palette, soft 3D style, and simple visual metaphors, giving enough freedom to build new screens, categories, and campaign materials without starting from scratch.`,
+      body: [
+        "The visual system works like a constructor. Combinations of 3D objects,",
+        "abstract shapes, gradients, and patterns fit into one flexible identity.",
+        "These elements can be mixed in different ways depending on the format.",
+        "The system stays recognizable through Ozon's blue palette, soft 3D",
+        "style, and simple visual metaphors, giving enough freedom to build new",
+        "screens, categories, and campaign materials without starting from",
+        "scratch.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -82,7 +102,7 @@ export const ozonEducationCase: PortfolioCase = {
       width: 2704,
       height: 3320,
       spacingBefore: "m",
-      mobileSpacingBefore: "s",
+      mobileSpacingBefore: "xs",
     },
     {
       type: "image",
@@ -92,14 +112,20 @@ export const ozonEducationCase: PortfolioCase = {
       width: 2704,
       height: 1008,
       spacingBefore: "s",
-      mobileSpacingBefore: "s",
+      mobileSpacingBefore: "xs",
     },
 
     // 4. Categories.
     {
       type: "text",
       title: "categories",
-      body: `Content was grouped into clear categories, so users could understand the platform faster. Each category got its own visual metaphor: from product cards and analytics to advertising, sales growth, finance, and automation. The idea was simple: less generic education visuals, more objects that actually connect to sellers' daily work.`,
+      body: [
+        "Content was grouped into clear categories, so users could understand the",
+        "platform faster. Each category got its own visual metaphor: from product",
+        "cards and analytics to advertising, sales growth, finance, and",
+        "automation. The idea was simple: less generic education visuals, more",
+        "objects that actually connect to sellers' daily work.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -111,7 +137,7 @@ export const ozonEducationCase: PortfolioCase = {
       width: 2704,
       height: 2880,
       spacingBefore: "m",
-      mobileSpacingBefore: "s",
+      mobileSpacingBefore: "xs",
     },
     {
       type: "image",
@@ -136,7 +162,12 @@ export const ozonEducationCase: PortfolioCase = {
     {
       type: "text",
       title: "results",
-      body: `The redesign made Ozon Education more consistent and easier to scale. The platform got a clearer identity, a stronger connection to Ozon, and a visual system that can support courses, categories, banners, and future content without starting from scratch every time.`,
+      body: [
+        "The redesign made Ozon Education more consistent and easier to scale.",
+        "The platform got a clearer identity, a stronger connection to Ozon, and",
+        "a visual system that can support courses, categories, banners, and",
+        "future content without starting from scratch every time.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -147,7 +178,7 @@ export const ozonEducationCase: PortfolioCase = {
       width: 2704,
       height: 2244,
       spacingBefore: "m",
-      mobileSpacingBefore: "s",
+      mobileSpacingBefore: "xs",
     },
   ],
 };

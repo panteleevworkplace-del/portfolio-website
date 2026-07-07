@@ -22,7 +22,14 @@ const assets = {
 export const mtsYourBusinessCase: PortfolioCase = {
   slug: "mts-your-business",
   title: "MTS. Contest Website",
-  intro: `MTS, in partnership with RBC, launched a nationwide grant program supporting entrepreneurs who improve urban life through services, public spaces, and cultural/socio-cultural initiatives. The website became the central platform for the campaign, which also included a TV commercial series. Users could read about the initiative, register directly on the website to apply for funding of up to 2 million rubles for their business.`,
+  intro: [
+    "MTS, in partnership with RBC, launched a nationwide grant program",
+    "supporting entrepreneurs who improve urban life through services, public",
+    "spaces, and cultural/socio-cultural initiatives. The website became the",
+    "central platform for the campaign, which also included a TV commercial",
+    "series. Users could read about the initiative, register directly on the",
+    "website to apply for funding of up to 2 million rubles for their business.",
+  ].join(" "),
   blocks: [
     // 1. First visual block below the intro.
     {
@@ -40,7 +47,14 @@ export const mtsYourBusinessCase: PortfolioCase = {
     {
       type: "text",
       title: "approach",
-      body: `The tone of the project was built around a simple and human idea: MTS not only understands the challenges small businesses face but also shares their drive for growth and genuinely believes in their power to change their communities. My task was to translate this feeling into a digital space — clear, supportive, and motivating — so entrepreneurs could easily understand the program and feel encouraged to join.`,
+      body: [
+        "The tone of the project was built around a simple and human idea: MTS",
+        "not only understands the challenges small businesses face but also",
+        "shares their drive for growth and genuinely believes in their power to",
+        "change their communities. My task was to translate this feeling into a",
+        "digital space — clear, supportive, and motivating — so entrepreneurs",
+        "could easily understand the program and feel encouraged to join.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -60,7 +74,14 @@ export const mtsYourBusinessCase: PortfolioCase = {
     // 4. Design explanation.
     {
       type: "text",
-      body: `The design followed the newest MTS visual guidelines, where bold typography, large expressive photography, and bright accent color play a key role. These visuals helped convey confidence, optimism, and the energy behind entrepreneurial creativity. A clear structure and a flexible grid helped keep the whole website easy to navigate, while still making the platform feel lively and engaging.`,
+      body: [
+        "The design followed the newest MTS visual guidelines, where bold",
+        "typography, large expressive photography, and bright accent color play a",
+        "key role. These visuals helped convey confidence, optimism, and the",
+        "energy behind entrepreneurial creativity. A clear structure and a",
+        "flexible grid helped keep the whole website easy to navigate, while",
+        "still making the platform feel lively and engaging.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -99,7 +120,14 @@ export const mtsYourBusinessCase: PortfolioCase = {
     {
       type: "text",
       title: "results",
-      body: `The final website combines storytelling, clarity, and action. Users can watch the TV series, see how nearby districts support local businesses, and register for the grant in just a few steps. The design creates an emotional yet practical experience — one that reflects MTS's belief in entrepreneurs and motivates them to take the next step for their business.`,
+      body: [
+        "The final website combines storytelling, clarity, and action. Users can",
+        "watch the TV series, see how nearby districts support local businesses,",
+        "and register for the grant in just a few steps. The design creates an",
+        "emotional yet practical experience — one that reflects MTS's belief in",
+        "entrepreneurs and motivates them to take the next step for their",
+        "business.",
+      ].join(" "),
       spacingBefore: "xl",
       mobileSpacingBefore: "s",
     },

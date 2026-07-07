@@ -19,7 +19,12 @@ const assets = {
 export const sberTechConferenceCase: PortfolioCase = {
   slug: "sber-tech-conference",
   title: "Sber Tech. Conference",
-  intro: `For Platform V — a flagship conference exploring the intersection of people, communication, and emerging technologies — I developed a dynamic visual identity that builds on the platform's existing visual code to show human and technology synergy.`,
+  intro: [
+    "For Platform V — a flagship conference exploring the intersection of",
+    "people, communication, and emerging technologies — I developed a dynamic",
+    "visual identity that builds on the platform's existing visual code to show",
+    "human and technology synergy.",
+  ].join(" "),
   blocks: [
     // 1. Main identity visual.
     {
@@ -36,7 +41,14 @@ export const sberTechConferenceCase: PortfolioCase = {
     {
       type: "text",
       title: "concept",
-      body: `Two concept directions emerged: the first blends human forms with digital to show technological humanism and that people remain at the center of innovation. The second leans into bright neon lighting and smooth gradients to create a futuristic, tech-driven atmosphere — a clean, bold option that works especially well for large spaces and wayfinding.`,
+      body: [
+        "Two concept directions emerged: the first blends human forms with",
+        "digital to show technological humanism and that people remain at the",
+        "center of innovation. The second leans into bright neon lighting and",
+        "smooth gradients to create a futuristic, tech-driven atmosphere — a",
+        "clean, bold option that works especially well for large spaces and",
+        "wayfinding.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -64,7 +76,13 @@ export const sberTechConferenceCase: PortfolioCase = {
     // 4. Giveaways explanation.
     {
       type: "text",
-      body: `All conference giveaways — from totes and stickers to notebooks and coffee cups — carry the key visuals into tactile form. Each item seamlessly extends the glass-and-wire motif and neon-gradient treatments, ensuring a cohesive, immersive brand experience across every physical touchpoint.`,
+      body: [
+        "All conference giveaways — from totes and stickers to notebooks and",
+        "coffee cups — carry the key visuals into tactile form. Each item",
+        "seamlessly extends the glass-and-wire motif and neon-gradient",
+        "treatments, ensuring a cohesive, immersive brand experience across every",
+        "physical touchpoint.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -102,7 +120,11 @@ export const sberTechConferenceCase: PortfolioCase = {
     {
       type: "text",
       title: "next steps",
-      body: `Double identity approach provides maximal flexibility across digital and physical touchpoints. Post-conference, this system can be easily adapted for webinars, social media campaigns, and future event branding.`,
+      body: [
+        "Double identity approach provides maximal flexibility across digital and",
+        "physical touchpoints. Post-conference, this system can be easily adapted",
+        "for webinars, social media campaigns, and future event branding.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },

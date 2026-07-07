@@ -22,7 +22,13 @@ const assets = {
 export const snickersCase: PortfolioCase = {
   slug: "snickers",
   title: "Snickers",
-  intro: `For the Snickers promo website, the central idea was built around the message "Get charged up for study and work." The campaign translated the familiar Snickers insight — hunger and distraction reduce performance — into an interactive digital experience. Snickers is the trigger that helps users regain energy, clarity, and concentration during study or work.`,
+  intro: [
+    'For the Snickers promo website, the central idea was built around the',
+    'message "Get charged up for study and work." The campaign translated the',
+    "familiar Snickers insight — hunger and distraction reduce performance —",
+    "into an interactive digital experience. Snickers is the trigger that helps",
+    "users regain energy, clarity, and concentration during study or work.",
+  ].join(" "),
   blocks: [
     // 1. Main campaign visual.
     {
@@ -39,7 +45,14 @@ export const snickersCase: PortfolioCase = {
     {
       type: "text",
       title: "game",
-      body: `The core gameplay on the landing revolved around jumping through obstacles that symbolized distractions: notifications, noise, stress, and chaos. Things that are standing in the way of productivity. Reaching the Snickers bar at the end of each level activated a "supercharged" state, reinforcing the brand message through interaction rather than explanation.`,
+      body: [
+        "The core gameplay on the landing revolved around jumping through",
+        "obstacles that symbolized distractions: notifications, noise, stress,",
+        "and chaos. Things that are standing in the way of productivity. Reaching",
+        'the Snickers bar at the end of each level activated a "supercharged"',
+        "state, reinforcing the brand message through interaction rather than",
+        "explanation.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -66,7 +79,12 @@ export const snickersCase: PortfolioCase = {
     {
       type: "text",
       title: "visuals",
-      body: `The design combined Snickers branding with added custom illustrations and dynamic zipper elements to express energy and momentum. The result was a bold, high-contrast aesthetic that felt both playful and purposeful, supporting the theme of focus through energy.`,
+      body: [
+        "The design combined Snickers branding with added custom illustrations",
+        "and dynamic zipper elements to express energy and momentum. The result",
+        "was a bold, high-contrast aesthetic that felt both playful and",
+        "purposeful, supporting the theme of focus through energy.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -102,7 +120,13 @@ export const snickersCase: PortfolioCase = {
     {
       type: "text",
       title: "video",
-      body: `I also developed a series of animated banners that carried the same visual language and narrative. These videos translated the game mechanics and "charged up" transformation into short, attention-grabbing animations, ensuring a recognizable presence across all digital touchpoints.`,
+      body: [
+        "I also developed a series of animated banners that carried the same",
+        "visual language and narrative. These videos translated the game",
+        'mechanics and "charged up" transformation into short,',
+        "attention-grabbing animations, ensuring a recognizable presence across",
+        "all digital touchpoints.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },

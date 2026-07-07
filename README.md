@@ -1,6 +1,7 @@
 # Artem Panteleev Portfolio Website
 
-Personal portfolio website for Artem Panteleev, built with Vite, React, and TypeScript.
+Personal static portfolio website for Artem Panteleev, built with Vite,
+React, and TypeScript.
 
 The main page contains:
 
@@ -23,11 +24,17 @@ The main page contains:
 
 ## Run Locally
 
+`node_modules/` is not committed. After cloning or downloading the project,
+install dependencies first:
+
 Install dependencies:
 
 ```bash
 npm install
 ```
+
+`npm install` reads `package.json` and `package-lock.json`, creates
+`node_modules/`, and installs the exact dependency tree needed for the app.
 
 Start development server:
 
@@ -93,9 +100,12 @@ Case page files:
 
 ## Case Studies
 
-Case pages use one reusable template. Each case controls its own content and layout order through data, so most edits should happen in the case data file, not in React components.
+Case pages use one reusable template. Each case controls its own content and
+layout order through data, so most edits should happen in the case data file,
+not in React components.
 
-This section is only about inner case pages such as `/cases/mts-your-business`. Main page work cards live separately in `src/data/portfolio.ts`.
+This section is only about inner case pages such as `/cases/mts-your-business`.
+Main page work cards live separately in `src/data/portfolio.ts`.
 
 Core files:
 
@@ -159,7 +169,10 @@ Image block:
 }
 ```
 
-Use `mobileSrc` only when the mobile version needs a different crop or composition. If `mobileSrc` is missing, the desktop image is used on every viewport. Add `width` and `height` when possible to keep layout stable while images load.
+Use `mobileSrc` only when the mobile version needs a different crop or
+composition. If `mobileSrc` is missing, the desktop image is used on every
+viewport. Add `width` and `height` when possible to keep layout stable while
+images load.
 
 Video block:
 
@@ -176,7 +189,9 @@ Video block:
 }
 ```
 
-`poster` is required. It gives the browser a stable visual fallback if the video starts slowly in production. Use a compressed JPG poster near the video file, usually around `1600px` wide.
+`poster` is required. It gives the browser a stable visual fallback if the video
+starts slowly in production. Use a compressed JPG poster near the video file,
+usually around `1600px` wide.
 
 Video controls are intentionally explicit:
 
@@ -240,7 +255,9 @@ Wavy border filters:
 
 - Chrome/Firefox desktop use the default animated `#wavy-border-filter`.
 - Safari desktop uses a lighter animated `#wavy-border-filter-safari` fallback.
-- Safari desktop fallback keeps animation, but reduces the cost with `numOctaves="1"`, `scale="8"`, and a slower `dur="9s"` baseFrequency animation.
+- Safari desktop fallback keeps animation, but reduces the cost with
+  `numOctaves="1"`, `scale="8"`, and a slower `dur="9s"` baseFrequency
+  animation.
 - Mobile uses `#wavy-border-filter-mobile-static` and keeps the static border behavior for performance.
 
 ## Important Behavior Notes
@@ -249,7 +266,9 @@ Main page:
 
 - Mobile wavy borders use `#wavy-border-filter-mobile-static` and stay static/non-animated to avoid iPhone/Safari heating.
 - Chrome/Firefox desktop use the default animated `#wavy-border-filter`.
-- Safari desktop uses the compromise animated `#wavy-border-filter-safari`: `numOctaves="1"`, `scale="8"`, and slower `dur="9s"` baseFrequency animation.
+- Safari desktop uses the compromise animated `#wavy-border-filter-safari`:
+  `numOctaves="1"`, `scale="8"`, and slower `dur="9s"` baseFrequency
+  animation.
 - JuicyGallery uses native horizontal scroll below `901px`.
 - JuicyGallery uses sticky desktop behavior from `901px` to `2299px`.
 - JuicyGallery switches to static mode at `2300px+`.

@@ -22,7 +22,13 @@ const assets = {
 export const mmsSkittlesCase: PortfolioCase = {
   slug: "mms-skittles",
   title: "M&M’s x Skittles",
-  intro: `For the M&M's promo website, the core idea was to expand the experience of watching cinema at home together with M&M's into an engaging digital space. Instead of a static landing page, the site invited users into an interactive world where their favourite movie moments and M&M's fun could merge.`,
+  intro: [
+    "For the M&M's promo website, the core idea was to expand the experience",
+    "of watching cinema at home together with M&M's into an engaging digital",
+    "space. Instead of a static landing page, the site invited users into an",
+    "interactive world where their favourite movie moments and M&M's fun could",
+    "merge.",
+  ].join(" "),
   blocks: [
     // 1. Main campaign visual.
     {
@@ -35,11 +41,17 @@ export const mmsSkittlesCase: PortfolioCase = {
       mobileSpacingBefore: "xs",
     },
 
-    // 2. Trivia mechanicsn.
+    // 2. Trivia mechanics.
     {
       type: "text",
       title: "trivia",
-      body: `I designed an interactive meme-based game that tapped into popular culture and internet humour. This game wasn't just a gimmick — it provided users with a chance to earn extra prizes through quick cultural quizzes and playful challenges. The experience bridged entertainment and brand interaction in a way that felt natural for the M&M's audience.`,
+      body: [
+        "I designed an interactive meme-based game that tapped into popular",
+        "culture and internet humour. This game wasn't just a gimmick — it",
+        "provided users with a chance to earn extra prizes through quick cultural",
+        "quizzes and playful challenges. The experience bridged entertainment and",
+        "brand interaction in a way that felt natural for the M&M's audience.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -69,7 +81,13 @@ export const mmsSkittlesCase: PortfolioCase = {
     {
       type: "text",
       title: "visuals",
-      body: `The design language drew from card-game visuals, creating a dynamic UI that felt like a mashup between a quiz app and a thematic promo portal. The interface used card-like modules, clickable content blocks, and animated interactions that echoed the feel of flipping through trivia cards while watching a movie at home.`,
+      body: [
+        "The design language drew from card-game visuals, creating a dynamic UI",
+        "that felt like a mashup between a quiz app and a thematic promo portal.",
+        "The interface used card-like modules, clickable content blocks, and",
+        "animated interactions that echoed the feel of flipping through trivia",
+        "cards while watching a movie at home.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
@@ -104,7 +122,12 @@ export const mmsSkittlesCase: PortfolioCase = {
     // 5. Animated campaign materials.
     {
       type: "text",
-      body: `I also directed animated commercials and a set of banners to promote the campaign across digital channels. They carried the campaign's visual identity into motion, using characterful animation and quick visual humour to grab attention and drive traffic back to the site.`,
+      body: [
+        "I also directed animated commercials and a set of banners to promote",
+        "the campaign across digital channels. They carried the campaign's visual",
+        "identity into motion, using characterful animation and quick visual",
+        "humour to grab attention and drive traffic back to the site.",
+      ].join(" "),
       spacingBefore: "l",
       mobileSpacingBefore: "s",
     },
