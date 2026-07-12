@@ -8,6 +8,7 @@ import type { PortfolioCase } from "./cases/types";
 export type {
   CaseBlock,
   CaseImageBlock,
+  CaseSeo,
   CaseSpacing,
   CaseTextBlock,
   CaseVideoBlock,

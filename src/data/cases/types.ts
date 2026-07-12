@@ -33,9 +33,16 @@ export type CaseVideoBlock = {
 
 export type CaseBlock = CaseTextBlock | CaseImageBlock | CaseVideoBlock;
 
+export type CaseSeo = {
+  title?: string;
+  description?: string;
+  image?: string;
+};
+
 export type PortfolioCase = {
   slug: string;
   title: string;
   intro: string;
   blocks: CaseBlock[];
+  seo?: CaseSeo;
 };

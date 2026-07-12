@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import { getCaseBySlug } from "./data/cases";
 import CaseStudyPage from "./pages/case-study-page";
 import NotFoundPage from "./pages/not-found-page";
+import { applyHomeMetadata } from "./seo";
 
 const getLocationSnapshot = () =>
   `${window.location.pathname}${window.location.search}${window.location.hash}`;
@@ -115,6 +116,10 @@ function SvgFilters() {
 }
 
 function HomePage() {
+  useEffect(() => {
+    applyHomeMetadata();
+  }, []);
+
   useEffect(() => {
     if (!window.location.hash) {
       const frameId = requestAnimationFrame(() => {

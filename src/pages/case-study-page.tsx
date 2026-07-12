@@ -7,6 +7,7 @@ import {
   type PortfolioCase,
   getNextCase,
 } from "../data/cases";
+import { applyCaseMetadata } from "../seo";
 
 type CaseStudyPageProps = {
   portfolioCase: PortfolioCase;
@@ -193,6 +194,10 @@ function CaseBlockRenderer({
 export default function CaseStudyPage({ portfolioCase }: CaseStudyPageProps) {
   const nextCase = getNextCase(portfolioCase);
   let imageCount = 0;
+
+  useEffect(() => {
+    applyCaseMetadata(portfolioCase);
+  }, [portfolioCase]);
 
   useEffect(() => {
     const prefersMobile = window.matchMedia("(max-width: 900px)").matches;

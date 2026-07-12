@@ -260,6 +260,19 @@ Wavy border filters:
   animation.
 - Mobile uses `#wavy-border-filter-mobile-static` and keeps the static border behavior for performance.
 
+## SEO
+
+- Production canonical domain: `https://artyarty.com`.
+- `public/robots.txt` allows crawling and points to `public/sitemap.xml`.
+- The sitemap lists the homepage and every current case route. Add a new case URL
+  when adding it to `src/data/cases.ts`.
+- Homepage metadata lives in `index.html`. Case metadata is generated in
+  `src/seo.ts` from the case `title`, `intro`, and first image/video poster.
+  Add optional `seo.title`, `seo.description`, or `seo.image` to a case file
+  only when its automatic values need an override.
+- Google Search Console and Bing Webmaster Tools are configured manually outside
+  this repository.
+
 ## Important Behavior Notes
 
 Main page:
