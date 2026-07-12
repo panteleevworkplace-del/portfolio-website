@@ -102,6 +102,8 @@ export default function Contact() {
                     src="/icons/arrow.svg"
                     alt=""
                     aria-hidden="true"
+                    width={28}
+                    height={28}
                   />
                 </span>
               </span>
@@ -111,6 +113,8 @@ export default function Contact() {
               src="/icons/smiley.png"
               alt=""
               aria-hidden="true"
+              width={298}
+              height={298}
             />
 
             <div className="contact-hearts" aria-hidden="true">
@@ -150,7 +154,13 @@ export default function Contact() {
                 key={link.label}
               >
                 <span>{link.label}</span>
-                <img src="/icons/arrow-link.svg" alt="" aria-hidden="true" />
+                <img
+                  src="/icons/arrow-link.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width={17}
+                  height={16}
+                />
               </a>
             ))}
           </div>
@@ -175,7 +185,13 @@ export default function Contact() {
         <span className="footer-center">© 2026</span>
         <span className="footer-right">
           based in the internet
-          <img src="/icons/planet.svg" alt="" aria-hidden="true" />
+          <img
+            src="/icons/planet.svg"
+            alt=""
+            aria-hidden="true"
+            width={19}
+            height={19}
+          />
         </span>
       </footer>
     </section>

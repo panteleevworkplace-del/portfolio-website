@@ -241,7 +241,13 @@ export default function CaseStudyPage({ portfolioCase }: CaseStudyPageProps) {
   return (
     <main className="case-page">
       <a className="case-back" href="/" aria-label="Go to homepage">
-        <img src="/icons/arrow-link.svg" alt="" aria-hidden="true" />
+        <img
+          src="/icons/arrow-link.svg"
+          alt=""
+          aria-hidden="true"
+          width={17}
+          height={16}
+        />
         take me back
       </a>
 

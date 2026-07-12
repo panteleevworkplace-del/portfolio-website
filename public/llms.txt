@@ -1,0 +1,34 @@
+# Artem Panteleev
+
+> Independent Digital Designer and Art Director creating websites, visual
+> storytelling, cross-media campaigns, key visuals, and digital brand systems
+> for global clients.
+
+## Portfolio
+
+- [Homepage](https://www.artyarty.com/): Portfolio overview, selected work, clients,
+  employment history, and contact details.
+
+## Case Studies
+
+- [Ozon Education](https://www.artyarty.com/cases/ozon-education): Learning platform
+  redesign and scalable visual identity for marketplace sellers.
+- [M&M's x Skittles](https://www.artyarty.com/cases/mms-skittles): Interactive movie
+  promo campaign, trivia game, website, and animated materials.
+- [Snickers](https://www.artyarty.com/cases/snickers): Interactive promo campaign,
+  game mechanics, visual system, and animated banners.
+- [Sber Tech. Conference](https://www.artyarty.com/cases/sber-tech-conference):
+  Platform V conference visual identity and physical event touchpoints.
+- [MTS. Contest Website](https://www.artyarty.com/cases/mts-your-business): Grant
+  program website, registration flow, editorial layouts, and campaign visuals.
+
+## Contact
+
+- [Behance](https://www.behance.net/panteleevw21d9)
+- [LinkedIn](https://www.linkedin.com/in/artem-panteleev/)
+- [Email](mailto:panteleevworkplace@gmail.com)
+
+## Site Files
+
+- [Sitemap](https://www.artyarty.com/sitemap.xml)
+- [Robots](https://www.artyarty.com/robots.txt)

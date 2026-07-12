@@ -110,6 +110,8 @@ export default function Hero() {
                       src="/icons/arrow.svg"
                       alt=""
                       aria-hidden="true"
+                      width={28}
+                      height={28}
                     />
                   </span>
                 </span>

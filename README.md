@@ -262,7 +262,7 @@ Wavy border filters:
 
 ## SEO
 
-- Production canonical domain: `https://artyarty.com`.
+- Production canonical domain: `https://www.artyarty.com`.
 - `public/robots.txt` allows crawling and points to `public/sitemap.xml`.
 - The sitemap lists the homepage and every current case route. Add a new case URL
   when adding it to `src/data/cases.ts`.

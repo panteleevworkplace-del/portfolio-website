@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://artyarty.com/sitemap.xml
+Sitemap: https://www.artyarty.com/sitemap.xml

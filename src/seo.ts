@@ -1,11 +1,11 @@
 import type { PortfolioCase } from "./data/cases";
 
-export const SITE_URL = "https://artyarty.com";
+export const SITE_URL = "https://www.artyarty.com";
 
 const homeMetadata = {
-  title: "Artem Panteleev — Digital Designer & Art Director",
+  title: "Artem Panteleev – Designer",
   description:
-    "Digital Designer and Art Director working across websites, campaigns, key visuals, and digital brand systems.",
+    "Digital Designer and Art Director. Web design, visual storytelling, cross-media campaigns, key visuals and digital brand systems for global clients.",
   url: `${SITE_URL}/`,
   image: `${SITE_URL}/og-image.jpg?v=1`,
 };
@@ -76,7 +76,7 @@ const applyMetadata = (metadata: PageMetadata) => {
   setMetaContent("property", "og:description", metadata.description);
   setMetaContent("property", "og:url", metadata.url);
   setMetaContent("property", "og:image", metadata.image);
-  setMetaContent("property", "og:site_name", "Artem Panteleev Portfolio");
+  setMetaContent("property", "og:site_name", "artyarty.com");
 
   setMetaContent("name", "twitter:card", "summary_large_image");
   setMetaContent("name", "twitter:title", metadata.title);

@@ -15,7 +15,7 @@ Portfolio_website
 Current work mode:
 
 - Build and preview locally.
-- Netlify is the production deployment target for `https://artyarty.com`.
+- Netlify is the production deployment target for `https://www.artyarty.com`.
 - Cloudflare Pages at `https://artyarty.pages.dev/` is a legacy backup and may be outdated.
 - Do not rely on a deployed preview version as the source of truth.
 - Use the local project state as the current source of truth.
@@ -42,7 +42,7 @@ The main page layout is considered finished for desktop and mobile.
 - Case pages are data-driven. Add new cases through `src/data/cases/`,
   `src/data/cases.ts`, and `public/cases/`.
 - New public case routes need metadata and a matching entry in `public/sitemap.xml`.
-- Use `https://artyarty.com` for production canonical and social metadata URLs;
+- Use `https://www.artyarty.com` for production canonical and social metadata URLs;
   never point them to preview domains.
 - Keep main page code/styles and case page code/styles separated.
 - Do not add a CMS, backend, or external runtime service.
