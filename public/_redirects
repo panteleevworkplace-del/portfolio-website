@@ -1,1 +1,12 @@
-/* /index.html 200
+# Keep the legacy HTML entry point on the canonical homepage URL.
+/index.html / 301!
+
+# Known client-side routes should render the React application with 200.
+/cases/mts-your-business /index.html 200
+/cases/sber-tech-conference /index.html 200
+/cases/mms-skittles /index.html 200
+/cases/snickers /index.html 200
+/cases/ozon-education /index.html 200
+
+# Unknown paths still render the React 404 page, but return HTTP 404.
+/* /index.html 404
